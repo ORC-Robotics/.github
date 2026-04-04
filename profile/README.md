@@ -15,14 +15,16 @@ Developed at SENAI ORC.
 ---
 
 ## 🚀 Projects
-- [Coming soon]
+- Autonomous rescue robot for OBR, using computer vision for navigation and victim detection
+- Computer vision system for object and environment perception (OpenCV)
+- Modular robotic platform for rapid prototyping and testing
 
 ---
 
 ## 🧠 Stack
 - C++ / Python / Java
 - OpenCV
-- ROS (future)
+- ROS2 (future)
 - Embedded systems
 
 ---
