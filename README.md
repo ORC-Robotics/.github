@@ -1,31 +1,12 @@
-# ORC Robotics
+# ORC Robotics Organization Profile
 
-Robotics and AI engineering focused on real-world systems, computer vision and embedded development.
+This repository powers the public organization profile shown at [github.com/ORC-Robotics](https://github.com/ORC-Robotics).
 
-Developed at SENAI ORC.
+- Profile content lives in `profile/README.md`
+- Generated assets live in `profile/assets/`
+- The refresh workflow lives in `.github/workflows/refresh-org-stats.yml`
 
----
+No local clone is required for normal updates. The workflow refreshes the profile automatically through the GitHub API once `ORG_STATS_TOKEN` is configured.
 
-## ⚙️ Focus Areas
-- Autonomous robotics
-- Computer vision
-- Embedded systems (ESP32, Raspberry Pi)
-- Competition engineering (WorldSkills, OBR)
-
----
-
-## 🚀 Projects
-- [Coming soon]
-
----
-
-## 🧠 Stack
-- C++ / Python / Java
-- OpenCV
-- ROS (future)
-- Embedded systems
-
----
-
-## 📍 About
-We design and build high-performance robotic systems, combining mechanical design, electronics and software into fully integrated solutions.
+- `ORG_STATS_TOKEN` lets the workflow include private ORC-Robotics repositories in the generated snapshot.
+- For private repository stats, the token should have enough read access to the ORC-Robotics repositories.

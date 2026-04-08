@@ -1,0 +1,57 @@
+name: Refresh ORC Org Stats
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - profile/README.md
+      - scripts/generate_org_stats.py
+      - .github/workflows/refresh-org-stats.yml
+
+jobs:
+  refresh:
+    if: ${{ secrets.ORG_STATS_TOKEN != '' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate organization stats
+        env:
+          ORG_STATS_TOKEN: ${{ secrets.ORG_STATS_TOKEN }}
+        run: |
+          python scripts/generate_org_stats.py \
+            --org ORC-Robotics \
+            --readme profile/README.md \
+            --svg profile/assets/org-stats.svg \
+            --json profile/assets/org-stats.json
+
+      - name: Commit updated snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add profile/README.md profile/assets/org-stats.svg profile/assets/org-stats.json
+            git commit -m "Refresh organization stats"
+            git push
+          fi
+
+  no-token:
+    if: ${{ secrets.ORG_STATS_TOKEN == '' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Missing token notice
+        run: echo "ORG_STATS_TOKEN is not configured, so the private-inclusive stats snapshot was left unchanged."
