@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 import os
 from collections import defaultdict
 from dataclasses import dataclass
@@ -21,7 +20,7 @@ LANGUAGE_COLORS = {
     "CSS": "#663399",
     "PowerShell": "#012456",
     "CMake": "#2f8f4e",
-    "JavaScript": "#f1e05a",
+    "JavaScript": "#6b6426",
     "HTML": "#e34c26",
     "Java": "#b07219",
     "Other": "#94a3b8",
@@ -219,6 +218,19 @@ def build_stats_payload(org: str, repos: list[RepoStat], language_totals: dict[s
     }
 
 
+def normalize_payload_colors(payload: dict[str, object]) -> dict[str, object]:
+    normalized_languages = []
+    for language in payload.get("languages", []):
+        normalized = dict(language)
+        name = str(normalized.get("name", "Other"))
+        normalized["color"] = LANGUAGE_COLORS.get(name, LANGUAGE_COLORS["Other"])
+        normalized_languages.append(normalized)
+
+    normalized_payload = dict(payload)
+    normalized_payload["languages"] = normalized_languages
+    return normalized_payload
+
+
 def format_stats_markdown(payload: dict[str, object]) -> str:
     repo_data = payload["repositories"]
     languages = payload["languages"]
@@ -272,120 +284,142 @@ def replace_languages_section(readme_path: Path, new_block: str) -> None:
     readme_path.write_text(updated, encoding="utf-8")
 
 
-def polar_to_cartesian(cx: float, cy: float, radius: float, angle: float) -> tuple[float, float]:
-    radians = math.radians(angle)
-    return cx + radius * math.cos(radians), cy + radius * math.sin(radians)
-
-
-def build_arc_path(
-    cx: float,
-    cy: float,
-    outer_radius: float,
-    inner_radius: float,
-    start_angle: float,
-    end_angle: float,
-) -> str:
-    start_outer = polar_to_cartesian(cx, cy, outer_radius, start_angle)
-    end_outer = polar_to_cartesian(cx, cy, outer_radius, end_angle)
-    start_inner = polar_to_cartesian(cx, cy, inner_radius, end_angle)
-    end_inner = polar_to_cartesian(cx, cy, inner_radius, start_angle)
-    large_arc_flag = 1 if end_angle - start_angle > 180 else 0
-
-    return (
-        f"M {start_outer[0]:.2f} {start_outer[1]:.2f} "
-        f"A {outer_radius:.2f} {outer_radius:.2f} 0 {large_arc_flag} 1 {end_outer[0]:.2f} {end_outer[1]:.2f} "
-        f"L {start_inner[0]:.2f} {start_inner[1]:.2f} "
-        f"A {inner_radius:.2f} {inner_radius:.2f} 0 {large_arc_flag} 0 {end_inner[0]:.2f} {end_inner[1]:.2f} Z"
-    )
-
-
 def build_svg(payload: dict[str, object]) -> str:
     repo_data = payload["repositories"]
     languages = payload["languages"]
-    total_languages = sum(language["percent"] for language in languages)
-
-    cx = 246
-    cy = 285
-    outer_radius = 132
-    inner_radius = 82
-    start_angle = -90.0
-
-    slices = []
-    legend_items = []
-
     display_languages = languages[:5]
     if len(languages) > 5:
-        other_percent = round(max(0.0, total_languages - sum(lang["percent"] for lang in display_languages)), 1)
-        if other_percent > 0:
-            display_languages.append({"name": "Other", "percent": other_percent, "color": LANGUAGE_COLORS["Other"]})
-
-    if display_languages:
-        for language in display_languages:
-            sweep = 360 * float(language["percent"]) / 100
-            end_angle = start_angle + sweep
-            path = build_arc_path(cx, cy, outer_radius, inner_radius, start_angle, end_angle)
-            slices.append(
-                f'<path d="{path}" fill="{language["color"]}" stroke="#0f172a" stroke-width="2" />'
-            )
-            start_angle = end_angle
-    else:
-        fallback = build_arc_path(cx, cy, outer_radius, inner_radius, -90, 270)
-        slices.append(f'<path d="{fallback}" fill="#334155" stroke="#0f172a" stroke-width="2" />')
-
-    legend_y = 218
-    for language in display_languages:
-        legend_items.append(
-            f'''
-      <rect x="500" y="{legend_y - 18}" width="320" height="34" rx="17" fill="#172036" />
-      <circle cx="523" cy="{legend_y - 1}" r="7" fill="{language["color"]}" />
-      <text x="542" y="{legend_y + 4}" fill="#e2e8f0" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="600">
-        {language["name"]}
-      </text>
-      <text x="800" y="{legend_y + 4}" fill="#f8fafc" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        {float(language["percent"]):.1f}%
-      </text>'''
+        other_percent = round(
+            max(0.0, 100 - sum(float(language["percent"]) for language in display_languages)),
+            1,
         )
-        legend_y += 42
+        if other_percent > 0:
+            display_languages.append(
+                {"name": "Other", "percent": other_percent, "color": LANGUAGE_COLORS["Other"]}
+            )
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="920" height="540" viewBox="0 0 920 540" role="img" aria-labelledby="title desc">
+    max_percent = max((float(language["percent"]) for language in display_languages), default=1.0)
+    language_rows = []
+    row_y = 288
+    for language in display_languages:
+        width = max(14.0, 284.0 * float(language["percent"]) / max_percent)
+        language_rows.append(
+            f'''
+      <g transform="translate(0,{row_y})">
+        <text x="500" y="0" fill="#dce9ff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="600">
+        {language["name"]}
+        </text>
+        <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
+        {float(language["percent"]):.1f}%
+        </text>
+        <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
+        <rect x="500" y="14" width="{width:.2f}" height="12" rx="6" fill="{language["color"]}" />
+        <circle cx="814" cy="20" r="4" fill="{language["color"]}" opacity="0.95" />
+      </g>'''
+        )
+        row_y += 48
+
+    total = int(repo_data["total"])
+    public_count = int(repo_data["public"])
+    private_count = int(repo_data["private"])
+    private_ratio = private_count / total if total else 0
+    public_width = 336.0 * (1 - private_ratio)
+    private_width = 336.0 * private_ratio
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="700" viewBox="0 0 1040 700" role="img" aria-labelledby="title desc">
   <title id="title">ORC Robotics organization snapshot</title>
-  <desc id="desc">A pie style chart showing ORC Robotics repositories and language distribution.</desc>
-  <rect x="20" y="20" width="880" height="500" rx="28" fill="#0f172a" />
-  <rect x="42" y="108" width="836" height="380" rx="24" fill="#111a30" />
-  <text x="56" y="72" fill="#f8fafc" font-size="30" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+  <desc id="desc">A telemetry style chart showing ORC Robotics repositories and language distribution.</desc>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#12213d" stroke-width="1" />
+    </pattern>
+    <linearGradient id="surface" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1b34" />
+      <stop offset="100%" stop-color="#091224" />
+    </linearGradient>
+    <linearGradient id="publicBar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#55d6ff" />
+      <stop offset="100%" stop-color="#4b8cff" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1040" height="700" fill="#060f1d" />
+  <rect x="18" y="18" width="1004" height="664" rx="34" fill="url(#grid)" />
+  <rect x="18" y="18" width="1004" height="664" rx="34" fill="#081427" fill-opacity="0.9" />
+
+  <text x="58" y="86" fill="#f8fbff" font-size="32" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
     ORC Robotics Snapshot
   </text>
-  <text x="56" y="98" fill="#94a3b8" font-size="16" font-family="Segoe UI, Arial, sans-serif">
-    Repository footprint and language distribution
-  </text>
-  <rect x="706" y="50" width="152" height="30" rx="15" fill="#123b2a" />
-  <text x="782" y="69" fill="#9ae6b4" font-size="13" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle" font-weight="700">
-    {repo_data["private"]} private repos included
-  </text>
-  <line x1="458" y1="138" x2="458" y2="452" stroke="#22314f" stroke-width="1" />
-
-  {''.join(slices)}
-
-  <text x="{cx}" y="{cy - 8}" fill="#f8fafc" font-size="52" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="middle">
-    {repo_data["total"]}
-  </text>
-  <text x="{cx}" y="{cy + 24}" fill="#94a3b8" font-size="18" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    repositories
-  </text>
-  <text x="{cx}" y="{cy + 50}" fill="#cbd5e1" font-size="14" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    {repo_data["public"]} public / {repo_data["private"]} private
+  <text x="58" y="118" fill="#8fa6cb" font-size="16" font-family="Segoe UI, Arial, sans-serif">
+    Telemetry view for repository footprint and language usage across the organization
   </text>
 
-  <text x="500" y="160" fill="#f8fafc" font-size="24" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
-    Language Distribution
+  <rect x="806" y="58" width="178" height="32" rx="16" fill="#133926" />
+  <text x="895" y="78" fill="#9ae6b4" font-size="13" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="middle">
+    private repositories included
   </text>
-  <text x="500" y="184" fill="#94a3b8" font-size="14" font-family="Segoe UI, Arial, sans-serif">
-    Calculated from the organization code footprint
-  </text>
-  {''.join(legend_items)}
 
-  <line x1="500" y1="462" x2="820" y2="462" stroke="#22314f" stroke-width="1" />
-  <text x="500" y="486" fill="#94a3b8" font-size="14" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="42" y="148" width="956" height="504" rx="30" fill="#0a1730" />
+  <rect x="64" y="176" width="374" height="448" rx="24" fill="url(#surface)" />
+  <rect x="456" y="176" width="520" height="448" rx="24" fill="url(#surface)" />
+
+  <text x="88" y="214" fill="#8fa6cb" font-size="13" font-family="Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="1.2">
+    REPOSITORY TELEMETRY
+  </text>
+  <text x="88" y="308" fill="#ffffff" font-size="118" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+    {total}
+  </text>
+  <text x="92" y="350" fill="#9fb1cf" font-size="18" font-family="Segoe UI, Arial, sans-serif">
+    repositories tracked
+  </text>
+  <text x="92" y="376" fill="#667a9e" font-size="14" font-family="Segoe UI, Arial, sans-serif">
+    live organization footprint from the current GitHub API snapshot
+  </text>
+
+  <rect x="88" y="416" width="152" height="92" rx="18" fill="#0d2242" />
+  <text x="110" y="450" fill="#8fa6cb" font-size="12" font-family="Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="1.1">
+    PUBLIC
+  </text>
+  <text x="110" y="492" fill="#55d6ff" font-size="36" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+    {public_count}
+  </text>
+
+  <rect x="254" y="416" width="152" height="92" rx="18" fill="#0d2242" />
+  <text x="276" y="450" fill="#8fa6cb" font-size="12" font-family="Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="1.1">
+    PRIVATE
+  </text>
+  <text x="276" y="492" fill="#ff4f8b" font-size="36" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+    {private_count}
+  </text>
+
+  <text x="88" y="542" fill="#8fa6cb" font-size="12" font-family="Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="1.1">
+    VISIBILITY SPLIT
+  </text>
+  <rect x="88" y="556" width="336" height="16" rx="8" fill="#142340" />
+  <rect x="88" y="556" width="{public_width:.2f}" height="16" rx="8" fill="url(#publicBar)" />
+  <rect x="{88 + public_width:.2f}" y="556" width="{private_width:.2f}" height="16" rx="8" fill="#ff4f8b" />
+
+  <text x="88" y="598" fill="#55d6ff" font-size="13" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+    public
+  </text>
+  <text x="370" y="598" fill="#ff4f8b" font-size="13" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
+    private
+  </text>
+
+  <text x="484" y="214" fill="#8fa6cb" font-size="13" font-family="Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="1.2">
+    LANGUAGE FOOTPRINT
+  </text>
+  <text x="484" y="244" fill="#ffffff" font-size="30" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+    Current Language Distribution
+  </text>
+  <text x="484" y="270" fill="#7f96ba" font-size="14" font-family="Segoe UI, Arial, sans-serif">
+    Scaled bars highlight dominant languages without crowding the panel.
+  </text>
+
+  {''.join(language_rows)}
+
+  <line x1="484" y1="582" x2="862" y2="582" stroke="#22314f" stroke-width="1" />
+  <text x="484" y="610" fill="#8fa6cb" font-size="14" font-family="Segoe UI, Arial, sans-serif">
     Updated {payload["generatedAt"]}
   </text>
 </svg>
@@ -485,6 +519,8 @@ def main() -> None:
         else:
             raise SystemExit("No GitHub token, input JSON, or local repositories were provided.")
         payload = build_stats_payload(args.org, repos, language_totals)
+
+    payload = normalize_payload_colors(payload)
 
     write_json(Path(args.json), payload)
     write_svg(Path(args.svg), payload)
