@@ -24,14 +24,11 @@ Developed at SENAI ORC.
 ## Current Languages
 
 <!-- languages:start -->
-- `C++` - 39.5% of the current organization code footprint
-- `Python` - 34.8% of the current organization code footprint
-- `TypeScript` - 23.3% of the current organization code footprint
-- `PowerShell` - 1.4% of the current organization code footprint
-- `CSS` - 0.8% of the current organization code footprint
-- `JavaScript` - 0.1% of the current organization code footprint
-- `CMake` - 0.1% of the current organization code footprint
-- `HTML` - 0.1% of the current organization code footprint
+<p align="left">
+  <img src="./assets/language-badges.svg" alt="Current ORC Robotics language badges" width="860" />
+</p>
+
+Active languages currently detected across ORC Robotics: `C++`, `Python`, `TypeScript`, `PowerShell`, `CSS`, `JavaScript`, `CMake`, `HTML`.
 <!-- languages:end -->
 
 ---

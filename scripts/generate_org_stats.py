@@ -239,11 +239,13 @@ def format_stats_markdown(payload: dict[str, object]) -> str:
 
 def format_languages_markdown(payload: dict[str, object]) -> str:
     languages = payload["languages"]
+    language_names = ", ".join(f"`{language['name']}`" for language in languages[:8])
     lines = ["<!-- languages:start -->"]
-    for language in languages[:8]:
-        lines.append(
-            f"- `{language['name']}` - {language['percent']:.1f}% of the current organization code footprint"
-        )
+    lines.append('<p align="left">')
+    lines.append('  <img src="./assets/language-badges.svg" alt="Current ORC Robotics language badges" width="860" />')
+    lines.append("</p>")
+    lines.append("")
+    lines.append(f"Active languages currently detected across ORC Robotics: {language_names}.")
     lines.append("<!-- languages:end -->")
     return "\n".join(lines)
 
@@ -302,17 +304,17 @@ def build_svg(payload: dict[str, object]) -> str:
     languages = payload["languages"]
     total_languages = sum(language["percent"] for language in languages)
 
-    cx = 230
-    cy = 240
-    outer_radius = 126
-    inner_radius = 72
+    cx = 246
+    cy = 285
+    outer_radius = 132
+    inner_radius = 82
     start_angle = -90.0
 
     slices = []
     legend_items = []
 
-    display_languages = languages[:6]
-    if len(languages) > 6:
+    display_languages = languages[:5]
+    if len(languages) > 5:
         other_percent = round(max(0.0, total_languages - sum(lang["percent"] for lang in display_languages)), 1)
         if other_percent > 0:
             display_languages.append({"name": "Other", "percent": other_percent, "color": LANGUAGE_COLORS["Other"]})
@@ -330,34 +332,37 @@ def build_svg(payload: dict[str, object]) -> str:
         fallback = build_arc_path(cx, cy, outer_radius, inner_radius, -90, 270)
         slices.append(f'<path d="{fallback}" fill="#334155" stroke="#0f172a" stroke-width="2" />')
 
-    legend_y = 122
+    legend_y = 218
     for language in display_languages:
         legend_items.append(
             f'''
-      <circle cx="520" cy="{legend_y}" r="8" fill="{language["color"]}" />
-      <text x="540" y="{legend_y + 5}" fill="#e2e8f0" font-size="18" font-family="Segoe UI, Arial, sans-serif">
+      <rect x="500" y="{legend_y - 18}" width="320" height="34" rx="17" fill="#172036" />
+      <circle cx="523" cy="{legend_y - 1}" r="7" fill="{language["color"]}" />
+      <text x="542" y="{legend_y + 4}" fill="#e2e8f0" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="600">
         {language["name"]}
       </text>
-      <text x="810" y="{legend_y + 5}" fill="#f8fafc" font-size="18" font-family="Segoe UI, Arial, sans-serif" text-anchor="end">
+      <text x="800" y="{legend_y + 4}" fill="#f8fafc" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
         {float(language["percent"]):.1f}%
       </text>'''
         )
         legend_y += 42
 
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480" role="img" aria-labelledby="title desc">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="920" height="540" viewBox="0 0 920 540" role="img" aria-labelledby="title desc">
   <title id="title">ORC Robotics organization snapshot</title>
   <desc id="desc">A pie style chart showing ORC Robotics repositories and language distribution.</desc>
-  <rect x="20" y="20" width="860" height="440" rx="28" fill="#0f172a" />
-  <text x="52" y="78" fill="#f8fafc" font-size="30" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+  <rect x="20" y="20" width="880" height="500" rx="28" fill="#0f172a" />
+  <rect x="42" y="108" width="836" height="380" rx="24" fill="#111a30" />
+  <text x="56" y="72" fill="#f8fafc" font-size="30" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
     ORC Robotics Snapshot
   </text>
-  <text x="52" y="108" fill="#94a3b8" font-size="16" font-family="Segoe UI, Arial, sans-serif">
+  <text x="56" y="98" fill="#94a3b8" font-size="16" font-family="Segoe UI, Arial, sans-serif">
     Repository footprint and language distribution
   </text>
-  <rect x="690" y="48" width="148" height="34" rx="17" fill="#123b2a" />
-  <text x="764" y="70" fill="#9ae6b4" font-size="14" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+  <rect x="706" y="50" width="152" height="30" rx="15" fill="#123b2a" />
+  <text x="782" y="69" fill="#9ae6b4" font-size="13" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle" font-weight="700">
     {repo_data["private"]} private repos included
   </text>
+  <line x1="458" y1="138" x2="458" y2="452" stroke="#22314f" stroke-width="1" />
 
   {''.join(slices)}
 
@@ -367,22 +372,68 @@ def build_svg(payload: dict[str, object]) -> str:
   <text x="{cx}" y="{cy + 24}" fill="#94a3b8" font-size="18" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
     repositories
   </text>
-  <text x="{cx}" y="{cy + 52}" fill="#cbd5e1" font-size="14" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+  <text x="{cx}" y="{cy + 50}" fill="#cbd5e1" font-size="14" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
     {repo_data["public"]} public / {repo_data["private"]} private
   </text>
 
-  <text x="520" y="88" fill="#f8fafc" font-size="24" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+  <text x="500" y="160" fill="#f8fafc" font-size="24" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
     Language Distribution
   </text>
-  <text x="520" y="110" fill="#94a3b8" font-size="15" font-family="Segoe UI, Arial, sans-serif">
+  <text x="500" y="184" fill="#94a3b8" font-size="14" font-family="Segoe UI, Arial, sans-serif">
     Calculated from the organization code footprint
   </text>
   {''.join(legend_items)}
 
-  <line x1="520" y1="390" x2="838" y2="390" stroke="#1e293b" stroke-width="1" />
-  <text x="520" y="420" fill="#94a3b8" font-size="14" font-family="Segoe UI, Arial, sans-serif">
+  <line x1="500" y1="462" x2="820" y2="462" stroke="#22314f" stroke-width="1" />
+  <text x="500" y="486" fill="#94a3b8" font-size="14" font-family="Segoe UI, Arial, sans-serif">
     Updated {payload["generatedAt"]}
   </text>
+</svg>
+'''
+
+
+def build_language_badges_svg(payload: dict[str, object]) -> str:
+    languages = payload["languages"][:8]
+    start_x = 8
+    start_y = 8
+    badge_height = 34
+    x = start_x
+    y = start_y
+    max_width = 860
+    row_gap = 12
+    badge_gap = 10
+    badges = []
+
+    for language in languages:
+        label = str(language["name"]).upper()
+        percent = f"{float(language['percent']):.1f}%"
+        label_width = max(46, len(label) * 8 + 18)
+        percent_width = len(percent) * 8 + 18
+        badge_width = label_width + percent_width + 18
+
+        if x + badge_width > max_width:
+            x = start_x
+            y += badge_height + row_gap
+
+        badges.append(
+            f'''
+  <g transform="translate({x},{y})">
+    <rect width="{badge_width}" height="{badge_height}" rx="9" fill="{language["color"]}" />
+    <text x="14" y="22" fill="#ffffff" font-size="13" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+      {label}
+    </text>
+    <rect x="{badge_width - percent_width - 8}" y="5" width="{percent_width}" height="24" rx="7" fill="#0f172a" fill-opacity="0.22" />
+    <text x="{badge_width - percent_width / 2 - 8}" y="22" fill="#ffffff" font-size="12" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="middle">
+      {percent}
+    </text>
+  </g>'''
+        )
+        x += badge_width + badge_gap
+
+    height = y + badge_height + start_y
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="860" height="{height}" viewBox="0 0 860 {height}" role="img" aria-labelledby="title">
+  <title id="title">Current ORC Robotics language badges</title>
+  {''.join(badges)}
 </svg>
 '''
 
@@ -397,12 +448,19 @@ def write_svg(path: Path, payload: dict[str, object]) -> None:
     path.write_text(build_svg(payload), encoding="utf-8")
 
 
+def write_badges_svg(path: Path, payload: dict[str, object]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(build_language_badges_svg(payload), encoding="utf-8")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate ORC Robotics organization stats.")
     parser.add_argument("--org", required=True, help="GitHub organization name.")
     parser.add_argument("--readme", required=True, help="Path to the profile README.")
     parser.add_argument("--svg", required=True, help="Path to the generated SVG card.")
+    parser.add_argument("--badges-svg", required=True, help="Path to the generated language badges SVG.")
     parser.add_argument("--json", required=True, help="Path to the generated stats JSON.")
+    parser.add_argument("--input-json", help="Optional existing stats JSON to reuse as input.")
     parser.add_argument(
         "--local-repo",
         action="append",
@@ -416,17 +474,21 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    token = os.getenv(args.token_env, "").strip()
-    if token:
-        repos, language_totals = fetch_github_stats(args.org, token)
-    elif args.local_repo:
-        repos, language_totals = merge_local_stats(args.local_repo)
+    if args.input_json:
+        payload = json.loads(Path(args.input_json).read_text(encoding="utf-8"))
     else:
-        raise SystemExit("No GitHub token or local repositories were provided.")
+        token = os.getenv(args.token_env, "").strip()
+        if token:
+            repos, language_totals = fetch_github_stats(args.org, token)
+        elif args.local_repo:
+            repos, language_totals = merge_local_stats(args.local_repo)
+        else:
+            raise SystemExit("No GitHub token, input JSON, or local repositories were provided.")
+        payload = build_stats_payload(args.org, repos, language_totals)
 
-    payload = build_stats_payload(args.org, repos, language_totals)
     write_json(Path(args.json), payload)
     write_svg(Path(args.svg), payload)
+    write_badges_svg(Path(args.badges_svg), payload)
     replace_stats_section(Path(args.readme), format_stats_markdown(payload))
     replace_languages_section(Path(args.readme), format_languages_markdown(payload))
 

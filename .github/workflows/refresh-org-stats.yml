@@ -35,6 +35,7 @@ jobs:
             --org ORC-Robotics \
             --readme profile/README.md \
             --svg profile/assets/org-stats.svg \
+            --badges-svg profile/assets/language-badges.svg \
             --json profile/assets/org-stats.json
 
       - name: Commit updated snapshot
@@ -42,7 +43,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain)" ]; then
-            git add profile/README.md profile/assets/org-stats.svg profile/assets/org-stats.json
+            git add profile/README.md profile/assets/org-stats.svg profile/assets/language-badges.svg profile/assets/org-stats.json
             git commit -m "Refresh organization stats"
             git push
           fi
