@@ -14,9 +14,9 @@ Developed at SENAI ORC.
 
 <!-- stats:start -->
 - Repositories analyzed: `6 total` (`5 private`, `1 public`)
-- Language distribution by code footprint: `C++ 45.7%`, `TypeScript 25.5%`, `Python 24.8%`, `JavaScript 1.7%`, `PowerShell 1.1%`, `Batchfile 0.6%`
+- Language distribution by code footprint: `C++ 42.5%`, `TypeScript 31.1%`, `Python 22.6%`, `JavaScript 1.5%`, `PowerShell 1.0%`, `Batchfile 0.5%`
 - This snapshot includes private repositories without exposing internal source code.
-- Last updated: `2026-04-10 05:33 UTC`
+- Last updated: `2026-04-11 05:04 UTC`
 <!-- stats:end -->
 
 > Statistics are generated automatically through GitHub Actions and refreshed directly from the GitHub API once `ORG_STATS_TOKEN` is configured. This keeps the private repository snapshot accurate without cloning repositories to a local machine.
@@ -28,7 +28,7 @@ Developed at SENAI ORC.
   <img src="./assets/language-badges.svg" alt="Current ORC Robotics language badges" width="860" />
 </p>
 
-Active languages currently detected across ORC Robotics: `C++`, `TypeScript`, `Python`, `JavaScript`, `PowerShell`, `Batchfile`, `CSS`, `Shell`.
+Active languages currently detected across ORC Robotics: `C++`, `TypeScript`, `Python`, `JavaScript`, `PowerShell`, `Batchfile`, `CSS`, `C`.
 <!-- languages:end -->
 
 ---
