@@ -1,6 +1,6 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-04-23 05:38 UTC",
+  "generatedAt": "2026-04-24 05:42 UTC",
   "repositories": {
     "total": 6,
     "public": 1,
@@ -16,20 +16,20 @@
   },
   "languages": [
     {
-      "name": "C++",
-      "bytes": 720492,
-      "percent": 38.6,
-      "color": "#f34b7d"
-    },
-    {
       "name": "TypeScript",
-      "bytes": 700817,
-      "percent": 37.5,
+      "bytes": 732578,
+      "percent": 38.4,
       "color": "#3178c6"
     },
     {
+      "name": "C++",
+      "bytes": 720492,
+      "percent": 37.8,
+      "color": "#f34b7d"
+    },
+    {
       "name": "Python",
-      "bytes": 374174,
+      "bytes": 382399,
       "percent": 20.0,
       "color": "#3572A5"
     },
@@ -42,7 +42,7 @@
     {
       "name": "PowerShell",
       "bytes": 23372,
-      "percent": 1.3,
+      "percent": 1.2,
       "color": "#012456"
     },
     {
@@ -66,7 +66,7 @@
     {
       "name": "C",
       "bytes": 2841,
-      "percent": 0.2,
+      "percent": 0.1,
       "color": "#94a3b8"
     },
     {
