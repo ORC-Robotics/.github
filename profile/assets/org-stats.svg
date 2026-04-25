@@ -97,7 +97,7 @@
         TypeScript
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        38.4%
+        38.7%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
         <rect x="500" y="14" width="284.00" height="12" rx="6" fill="#3178c6" />
@@ -108,10 +108,10 @@
         C++
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        37.8%
+        37.4%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
-        <rect x="500" y="14" width="279.56" height="12" rx="6" fill="#f34b7d" />
+        <rect x="500" y="14" width="274.46" height="12" rx="6" fill="#f34b7d" />
         <circle cx="814" cy="20" r="4" fill="#f34b7d" opacity="0.95" />
       </g>
       <g transform="translate(0,384)">
@@ -119,10 +119,10 @@
         Python
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        20.0%
+        20.1%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
-        <rect x="500" y="14" width="147.92" height="12" rx="6" fill="#3572A5" />
+        <rect x="500" y="14" width="147.50" height="12" rx="6" fill="#3572A5" />
         <circle cx="814" cy="20" r="4" fill="#3572A5" opacity="0.95" />
       </g>
       <g transform="translate(0,432)">
@@ -161,6 +161,6 @@
 
   <line x1="484" y1="582" x2="862" y2="582" stroke="#22314f" stroke-width="1" />
   <text x="484" y="610" fill="#8fa6cb" font-size="14" font-family="Segoe UI, Arial, sans-serif">
-    Updated 2026-04-24 05:42 UTC
+    Updated 2026-04-25 05:22 UTC
   </text>
 </svg>
