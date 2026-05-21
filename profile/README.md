@@ -14,9 +14,9 @@ Developed at SENAI ORC.
 
 <!-- stats:start -->
 - Repositories analyzed: `6 total` (`5 private`, `1 public`)
-- Language distribution by code footprint: `C++ 43.4%`, `TypeScript 35.1%`, `Python 18.2%`, `JavaScript 1.1%`, `PowerShell 1.1%`, `Shell 0.4%`
+- Language distribution by code footprint: `C++ 45.2%`, `TypeScript 34.0%`, `Python 17.7%`, `JavaScript 1.1%`, `PowerShell 1.1%`, `Shell 0.4%`
 - This snapshot includes private repositories without exposing internal source code.
-- Last updated: `2026-05-20 06:55 UTC`
+- Last updated: `2026-05-21 07:00 UTC`
 <!-- stats:end -->
 
 > Statistics are generated automatically through GitHub Actions and refreshed directly from the GitHub API once `ORG_STATS_TOKEN` is configured. This keeps the private repository snapshot accurate without cloning repositories to a local machine.
