@@ -1,6 +1,6 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-05-26 06:54 UTC",
+  "generatedAt": "2026-05-27 07:12 UTC",
   "repositories": {
     "total": 6,
     "public": 1,
@@ -17,26 +17,26 @@
   "languages": [
     {
       "name": "C++",
-      "bytes": 1044033,
-      "percent": 46.5,
+      "bytes": 1102890,
+      "percent": 47.9,
       "color": "#f34b7d"
     },
     {
       "name": "TypeScript",
       "bytes": 744835,
-      "percent": 33.2,
+      "percent": 32.3,
       "color": "#3178c6"
     },
     {
       "name": "Python",
       "bytes": 387141,
-      "percent": 17.2,
+      "percent": 16.8,
       "color": "#3572A5"
     },
     {
       "name": "JavaScript",
       "bytes": 24084,
-      "percent": 1.1,
+      "percent": 1.0,
       "color": "#6b6426"
     },
     {

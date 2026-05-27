@@ -97,7 +97,7 @@
         C++
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        46.5%
+        47.9%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
         <rect x="500" y="14" width="284.00" height="12" rx="6" fill="#f34b7d" />
@@ -108,10 +108,10 @@
         TypeScript
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        33.2%
+        32.3%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
-        <rect x="500" y="14" width="202.77" height="12" rx="6" fill="#3178c6" />
+        <rect x="500" y="14" width="191.51" height="12" rx="6" fill="#3178c6" />
         <circle cx="814" cy="20" r="4" fill="#3178c6" opacity="0.95" />
       </g>
       <g transform="translate(0,384)">
@@ -119,10 +119,10 @@
         Python
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        17.2%
+        16.8%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
-        <rect x="500" y="14" width="105.05" height="12" rx="6" fill="#3572A5" />
+        <rect x="500" y="14" width="99.61" height="12" rx="6" fill="#3572A5" />
         <circle cx="814" cy="20" r="4" fill="#3572A5" opacity="0.95" />
       </g>
       <g transform="translate(0,432)">
@@ -130,7 +130,7 @@
         JavaScript
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        1.1%
+        1.0%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
         <rect x="500" y="14" width="14.00" height="12" rx="6" fill="#6b6426" />
@@ -161,6 +161,6 @@
 
   <line x1="484" y1="582" x2="862" y2="582" stroke="#22314f" stroke-width="1" />
   <text x="484" y="610" fill="#8fa6cb" font-size="14" font-family="Segoe UI, Arial, sans-serif">
-    Updated 2026-05-26 06:54 UTC
+    Updated 2026-05-27 07:12 UTC
   </text>
 </svg>
