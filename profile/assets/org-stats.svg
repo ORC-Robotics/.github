@@ -39,7 +39,7 @@
     REPOSITORY TELEMETRY
   </text>
   <text x="88" y="308" fill="#ffffff" font-size="118" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
-    6
+    7
   </text>
   <text x="92" y="350" fill="#9fb1cf" font-size="18" font-family="Segoe UI, Arial, sans-serif">
     repositories tracked
@@ -56,7 +56,7 @@
     PUBLIC
   </text>
   <text x="110" y="504" fill="#55d6ff" font-size="36" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
-    1
+    3
   </text>
 
   <rect x="254" y="428" width="152" height="92" rx="18" fill="#0d2242" />
@@ -64,15 +64,15 @@
     PRIVATE
   </text>
   <text x="276" y="504" fill="#ff4f8b" font-size="36" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
-    5
+    4
   </text>
 
   <text x="88" y="554" fill="#8fa6cb" font-size="12" font-family="Segoe UI, Arial, sans-serif" font-weight="700" letter-spacing="1.1">
     VISIBILITY SPLIT
   </text>
   <rect x="88" y="568" width="336" height="16" rx="8" fill="#142340" />
-  <rect x="88" y="568" width="56.00" height="16" rx="8" fill="url(#publicBar)" />
-  <rect x="144.00" y="568" width="280.00" height="16" rx="8" fill="#ff4f8b" />
+  <rect x="88" y="568" width="144.00" height="16" rx="8" fill="url(#publicBar)" />
+  <rect x="232.00" y="568" width="192.00" height="16" rx="8" fill="#ff4f8b" />
 
   <text x="88" y="610" fill="#55d6ff" font-size="13" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
     public
@@ -97,7 +97,7 @@
         C++
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        47.7%
+        50.3%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
         <rect x="500" y="14" width="284.00" height="12" rx="6" fill="#f34b7d" />
@@ -105,54 +105,54 @@
       </g>
       <g transform="translate(0,336)">
         <text x="500" y="0" fill="#dce9ff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="600">
-        TypeScript
-        </text>
-        <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        32.4%
-        </text>
-        <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
-        <rect x="500" y="14" width="192.91" height="12" rx="6" fill="#3178c6" />
-        <circle cx="814" cy="20" r="4" fill="#3178c6" opacity="0.95" />
-      </g>
-      <g transform="translate(0,384)">
-        <text x="500" y="0" fill="#dce9ff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="600">
         Python
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        16.8%
+        33.8%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
-        <rect x="500" y="14" width="100.03" height="12" rx="6" fill="#3572A5" />
+        <rect x="500" y="14" width="190.84" height="12" rx="6" fill="#3572A5" />
         <circle cx="814" cy="20" r="4" fill="#3572A5" opacity="0.95" />
       </g>
-      <g transform="translate(0,432)">
+      <g transform="translate(0,384)">
         <text x="500" y="0" fill="#dce9ff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="600">
-        JavaScript
+        TypeScript
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        1.0%
+        13.4%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
-        <rect x="500" y="14" width="14.00" height="12" rx="6" fill="#6b6426" />
-        <circle cx="814" cy="20" r="4" fill="#6b6426" opacity="0.95" />
+        <rect x="500" y="14" width="75.66" height="12" rx="6" fill="#3178c6" />
+        <circle cx="814" cy="20" r="4" fill="#3178c6" opacity="0.95" />
       </g>
-      <g transform="translate(0,480)">
+      <g transform="translate(0,432)">
         <text x="500" y="0" fill="#dce9ff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="600">
         PowerShell
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        1.0%
+        0.9%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
         <rect x="500" y="14" width="14.00" height="12" rx="6" fill="#012456" />
         <circle cx="814" cy="20" r="4" fill="#012456" opacity="0.95" />
+      </g>
+      <g transform="translate(0,480)">
+        <text x="500" y="0" fill="#dce9ff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="600">
+        Shell
+        </text>
+        <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
+        0.6%
+        </text>
+        <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
+        <rect x="500" y="14" width="14.00" height="12" rx="6" fill="#94a3b8" />
+        <circle cx="814" cy="20" r="4" fill="#94a3b8" opacity="0.95" />
       </g>
       <g transform="translate(0,528)">
         <text x="500" y="0" fill="#dce9ff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="600">
         Other
         </text>
         <text x="860" y="0" fill="#ffffff" font-size="16" font-family="Segoe UI, Arial, sans-serif" font-weight="700" text-anchor="end">
-        1.1%
+        1.0%
         </text>
         <rect x="500" y="14" width="294" height="12" rx="6" fill="#1b2848" />
         <rect x="500" y="14" width="14.00" height="12" rx="6" fill="#94a3b8" />
@@ -161,6 +161,6 @@
 
   <line x1="484" y1="582" x2="862" y2="582" stroke="#22314f" stroke-width="1" />
   <text x="484" y="610" fill="#8fa6cb" font-size="14" font-family="Segoe UI, Arial, sans-serif">
-    Updated 2026-10-01 10:05 UTC
+    Updated 2026-10-02 09:43 UTC
   </text>
 </svg>
