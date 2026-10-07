@@ -40,7 +40,7 @@
 <rect x="610" y="212" width="252" height="16" rx="4" fill="#04a9b7" fill-opacity="0.09"/>
 <rect x="610" y="212" width="3" height="16" rx="1.5" fill="#04a9b7"/>
 <text x="621" y="223.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#fafaf9">Firmware</text>
-<text x="854" y="223.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#a6a39c" text-anchor="end">ESP32 · Raspberry Pi</text>
+<text x="854" y="223.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="400" fill="#a6a39c" text-anchor="end">STM32 · ESP32 · Raspberry Pi</text>
 <rect x="610" y="232" width="252" height="16" rx="4" fill="#84c65c" fill-opacity="0.09"/>
 <rect x="610" y="232" width="3" height="16" rx="1.5" fill="#84c65c"/>
 <text x="621" y="243.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#fafaf9">Electronics</text>
