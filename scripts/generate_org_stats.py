@@ -503,6 +503,8 @@ class Svg:
                 span_attrs += f' font-family="{run_family}, {run_fallback}"'
             if "size" in over:
                 span_attrs += f' font-size="{fmt(over["size"])}"'
+            if "dx" in over:
+                span_attrs += f' dx="{fmt(over["dx"])}"'
             if "dy" in over:
                 span_attrs += f' dy="{fmt(over["dy"])}"'
             if span_attrs:
@@ -581,23 +583,19 @@ def build_header_svg(payload: dict[str, object]) -> str:
         anchor="middle",
     )
 
-    # Masthead
-    svg.text(24, 72, "ORC Robotics", size=21, font="serif", weight=500)
-    by_x = 24 + text_width("ORC Robotics", 21, "serif", 500) + 8
-    svg.text(by_x, 71, "by SENAI ORC", size=11, fill=DIM)
-
-    tabs = ["Robotics", "Mechanical", "Electronics", "Software"]
-    tab_size = 12
-    tab_widths = [text_width(tab, tab_size, "sans", 500) + 24 for tab in tabs]
-    group_width = sum(tab_widths) + 6
-    gx = (W - group_width) / 2
-    svg.rect(gx, 50, group_width, 32, "#1a1917", rx=10, stroke=LINE, stroke_opacity="0.08")
-    tx = gx + 3
-    for index, (tab, width) in enumerate(zip(tabs, tab_widths)):
-        if index == 0:
-            svg.rect(tx, 53, width, 26, "#2a2825", rx=7)
-        svg.text(tx + width / 2, 70, tab, size=tab_size, weight=500, fill=TEXT if index == 0 else MUTED, anchor="middle")
-        tx += width
+    # Masthead: one text element, so "by SENAI ORC" always follows the
+    # wordmark at a fixed gap whatever font the viewer ends up rendering.
+    svg.text(
+        24,
+        72,
+        [
+            ("ORC Robotics", {}),
+            ("by SENAI ORC", {"font": "sans", "weight": 400, "size": 11, "fill": DIM, "dx": 10, "dy": -1}),
+        ],
+        size=21,
+        font="serif",
+        weight=500,
+    )
 
     repo_total = payload["repositories"]["total"]
     updated = datetime.strptime(payload["generatedAt"], "%Y-%m-%d %H:%M UTC")

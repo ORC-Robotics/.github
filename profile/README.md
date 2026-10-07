@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="./assets/snapshot.svg" width="100%" alt="ORC Robotics snapshot: public and private repositories, language share over time and latest activity" />
+  <img src="./assets/snapshot.svg" width="100%" alt="ORC Robotics snapshot: public and private repositories, language share per project, project mix and latest activity" />
 </p>
 
 <!-- repos:start -->
