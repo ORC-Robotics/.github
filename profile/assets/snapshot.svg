@@ -13,17 +13,17 @@
 <rect x="190.07" y="12" width="89.93" height="20" rx="10" fill="#1f1d1a" stroke="#fafaf9" stroke-opacity="0.08"/>
 <circle cx="203.07" cy="22" r="3" fill="#84c65c"/>
 <text x="212.07" y="25.8" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#d6d4cf">private incl.</text>
-<text x="16" y="62" font-family="ORCSerif, Georgia, 'Times New Roman', serif" font-size="22" font-weight="500" fill="#fafaf9"><tspan fill="#5d7ee9">3 public</tspan> and</text>
+<text x="16" y="62" font-family="ORCSerif, Georgia, 'Times New Roman', serif" font-size="22" font-weight="500" fill="#fafaf9"><tspan fill="#2f6fe4">3 public</tspan> and</text>
 <text x="16" y="88" font-family="ORCSerif, Georgia, 'Times New Roman', serif" font-size="22" font-weight="500" fill="#fafaf9"><tspan fill="#f14242">6 private</tspan> repositories</text>
 <text x="16" y="118" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#fafaf9">Public</text>
-<text x="16" y="133" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#5d7ee9">open source</text>
+<text x="16" y="133" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#2f6fe4">open source</text>
 <text x="276" y="118" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#fafaf9" text-anchor="end">Private</text>
 <text x="276" y="133" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#f14242" text-anchor="end">internal</text>
 <text x="16" y="176" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="38" font-weight="500" fill="#fafaf9" class="n">33.3<tspan fill="#a6a39c" font-size="14" dy="-16">%</tspan></text>
 <text x="276" y="176" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="38" font-weight="500" fill="#fafaf9" text-anchor="end" class="n">66.7<tspan fill="#a6a39c" font-size="14" dy="-16">%</tspan></text>
 <text x="16" y="193" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#85827c" class="n">3 repositories</text>
 <text x="276" y="193" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#85827c" text-anchor="end" class="n">6 repositories</text>
-<rect x="16" y="205" width="84.67" height="6" rx="3" fill="#5d7ee9"/>
+<rect x="16" y="205" width="84.67" height="6" rx="3" fill="#2f6fe4"/>
 <rect x="104.67" y="205" width="171.33" height="6" rx="3" fill="#f14242"/>
 <rect x="145" y="201" width="2" height="14" rx="1" fill="#fafaf9"/>
 <text x="16" y="238" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#a6a39c">Primary language</text>
@@ -36,13 +36,13 @@
 <text x="16" y="340" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="500" fill="#d6d4cf">quente-runtime</text>
 <rect x="112" y="330" width="133.44" height="13" rx="3" fill="#d9b47c"/>
 <text x="178.72" y="339.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="600" fill="#0f0e0d" text-anchor="middle">TS</text>
-<rect x="247.44" y="330" width="20.96" height="13" rx="3" fill="#5d7ee9"/>
+<rect x="247.44" y="330" width="20.96" height="13" rx="3" fill="#2f6fe4"/>
 <text x="257.92" y="339.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="600" fill="#0f0e0d" text-anchor="middle">Py</text>
 <rect x="270.4" y="330" width="5.44" height="13" rx="3" fill="#cea608"/>
 <text x="16" y="360.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#85827c">Private project</text>
 <rect x="112" y="350.5" width="151.04" height="13" rx="3" fill="#cea608"/>
 <text x="187.52" y="360" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="600" fill="#0f0e0d" text-anchor="middle">JS</text>
-<rect x="265.04" y="350.5" width="4.64" height="13" rx="3" fill="#5d7ee9"/>
+<rect x="265.04" y="350.5" width="4.64" height="13" rx="3" fill="#2f6fe4"/>
 <rect x="271.68" y="350.5" width="4.32" height="13" rx="3" fill="#a78bfa"/>
 <text x="16" y="381" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#85827c">Private project</text>
 <rect x="112" y="371" width="164" height="13" rx="3" fill="#f14242"/>
@@ -50,10 +50,10 @@
 <text x="16" y="401.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="500" fill="#d6d4cf">soul-robot</text>
 <rect x="112" y="391.5" width="86.18" height="13" rx="3" fill="#f14242"/>
 <text x="155.09" y="401" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="600" fill="#0f0e0d" text-anchor="middle">C++</text>
-<rect x="200.18" y="391.5" width="75.82" height="13" rx="3" fill="#5d7ee9"/>
+<rect x="200.18" y="391.5" width="75.82" height="13" rx="3" fill="#2f6fe4"/>
 <text x="238.09" y="401" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="600" fill="#0f0e0d" text-anchor="middle">Py</text>
 <text x="16" y="422" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#85827c">Private project</text>
-<rect x="112" y="412" width="138.08" height="13" rx="3" fill="#5d7ee9"/>
+<rect x="112" y="412" width="138.08" height="13" rx="3" fill="#2f6fe4"/>
 <text x="181.04" y="421.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="600" fill="#0f0e0d" text-anchor="middle">Py</text>
 <rect x="252.08" y="412" width="11.84" height="13" rx="3" fill="#84c65c"/>
 <rect x="265.92" y="412" width="10.08" height="13" rx="3" fill="#85827c"/>
@@ -61,7 +61,7 @@
 <rect x="112" y="432.5" width="164" height="13" rx="3" fill="#f14242"/>
 <text x="194" y="442" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="600" fill="#0f0e0d" text-anchor="middle">C++</text>
 <text x="16" y="463" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#85827c">Private project</text>
-<rect x="112" y="453" width="157.79" height="13" rx="3" fill="#5d7ee9"/>
+<rect x="112" y="453" width="157.79" height="13" rx="3" fill="#2f6fe4"/>
 <text x="190.89" y="462.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.5" font-weight="600" fill="#0f0e0d" text-anchor="middle">Py</text>
 <rect x="271.79" y="453" width="4.21" height="13" rx="3" fill="#84c65c"/>
 <text x="16" y="483.5" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#85827c">Private project</text>
@@ -80,13 +80,13 @@
 <rect x="464" y="69" width="116" height="4" rx="2" fill="#fafaf9" fill-opacity="0.07"/>
 <rect x="464" y="69" width="50.34" height="4" rx="2" fill="#f14242"/>
 <path d="M320 88H580" stroke="#fafaf9" stroke-opacity="0.05"/>
-<rect x="320" y="96" width="26" height="26" rx="7" fill="#5d7ee9" fill-opacity="0.16"/>
-<text x="333" y="113" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="600" fill="#5d7ee9" text-anchor="middle">Py</text>
+<rect x="320" y="96" width="26" height="26" rx="7" fill="#2f6fe4" fill-opacity="0.16"/>
+<text x="333" y="113" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="600" fill="#2f6fe4" text-anchor="middle">Py</text>
 <text x="356" y="107" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="500" fill="#fafaf9">Python</text>
 <text x="356" y="122" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#85827c" class="n">5 projects · 1.90 MB</text>
 <text x="580" y="108" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#fafaf9" text-anchor="end" class="n">30.8%</text>
 <rect x="464" y="117" width="116" height="4" rx="2" fill="#fafaf9" fill-opacity="0.07"/>
-<rect x="464" y="117" width="35.73" height="4" rx="2" fill="#5d7ee9"/>
+<rect x="464" y="117" width="35.73" height="4" rx="2" fill="#2f6fe4"/>
 <path d="M320 136H580" stroke="#fafaf9" stroke-opacity="0.05"/>
 <rect x="320" y="144" width="26" height="26" rx="7" fill="#cea608" fill-opacity="0.16"/>
 <text x="333" y="161" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="600" fill="#cea608" text-anchor="middle">JS</text>
@@ -171,5 +171,5 @@
 <circle cx="683" cy="390" r="7.5" fill="none" stroke="#d6d4cf" stroke-width="1.5"/>
 <text x="700" y="394" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#d6d4cf">Private repository</text>
 <text x="700" y="412" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#a6a39c">Internal work — source not public.</text>
-<text x="700" y="428" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#5d7ee9">Python</text>
+<text x="700" y="428" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="500" fill="#2f6fe4">Python</text>
 </svg>
