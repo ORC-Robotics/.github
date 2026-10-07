@@ -1,6 +1,6 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-10-07 10:13 UTC",
+  "generatedAt": "2026-10-07 16:11 UTC",
   "repositories": {
     "total": 9,
     "public": 3,
@@ -124,7 +124,7 @@
       "language": "C++",
       "pushedAt": "2026-10-07",
       "name": "soul-robot",
-      "description": "full custom robot for robocup rescue-line with raspberry pi and esp32"
+      "description": "Autonomous rescue robot — Raspberry Pi + ESP32, onboard vision and YOLO victim detection."
     },
     {
       "private": false,
@@ -157,7 +157,7 @@
   "publicRepos": [
     {
       "name": "soul-robot",
-      "description": "full custom robot for robocup rescue-line with raspberry pi and esp32",
+      "description": "Autonomous rescue robot — Raspberry Pi + ESP32, onboard vision and YOLO victim detection.",
       "language": "C++",
       "stars": 1,
       "url": "https://github.com/ORC-Robotics/soul-robot",
