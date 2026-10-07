@@ -625,7 +625,7 @@ def build_header_svg(payload: dict[str, object]) -> str:
         ("Tooling & telemetry", "TypeScript", GOLD),
         ("Perception", "Python · OpenCV", RED),
         ("Robot software", "ROS 2 · C++ · Java", BLUE),
-        ("Firmware", "ESP32 · Raspberry Pi", "#04a9b7"),
+        ("Firmware", "STM32 · ESP32 · Raspberry Pi", "#04a9b7"),
         ("Electronics", "Power · custom PCBs", GREEN),
         ("Mechanical", "CAD · fabrication", "#c9c6bf"),
     ]
