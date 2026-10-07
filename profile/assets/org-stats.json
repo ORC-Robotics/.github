@@ -1,6 +1,6 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-10-06 10:14 UTC",
+  "generatedAt": "2026-10-07 02:19 UTC",
   "repositories": {
     "total": 7,
     "public": 3,
@@ -10,17 +10,17 @@
     {
       "name": "C++",
       "bytes": 2802919,
-      "percent": 50.3
+      "percent": 51.1
     },
     {
       "name": "Python",
-      "bytes": 1886075,
-      "percent": 33.8
+      "bytes": 1903751,
+      "percent": 34.7
     },
     {
       "name": "TypeScript",
-      "bytes": 744835,
-      "percent": 13.4
+      "bytes": 631071,
+      "percent": 11.5
     },
     {
       "name": "PowerShell",
@@ -34,8 +34,8 @@
     },
     {
       "name": "JavaScript",
-      "bytes": 24084,
-      "percent": 0.4
+      "bytes": 26046,
+      "percent": 0.5
     },
     {
       "name": "C",
@@ -48,18 +48,18 @@
       "percent": 0.2
     },
     {
+      "name": "CSS",
+      "bytes": 8953,
+      "percent": 0.2
+    },
+    {
       "name": "Batchfile",
       "bytes": 7167,
       "percent": 0.1
     },
     {
-      "name": "CSS",
-      "bytes": 4665,
-      "percent": 0.1
-    },
-    {
       "name": "HTML",
-      "bytes": 355,
+      "bytes": 354,
       "percent": 0.0
     }
   ],
@@ -72,11 +72,31 @@
       "description": "operational multi-robot telemetry dashboard and control console"
     },
     {
+      "private": true,
+      "language": "C++",
+      "pushedAt": "2026-10-06"
+    },
+    {
       "private": false,
       "language": "C++",
       "pushedAt": "2026-09-28",
       "name": "soul-robot",
       "description": "full custom robot for robocup rescue-line with raspberry pi and esp32"
+    },
+    {
+      "private": true,
+      "language": "C++",
+      "pushedAt": "2026-05-22"
+    },
+    {
+      "private": true,
+      "language": "Python",
+      "pushedAt": "2026-04-15"
+    },
+    {
+      "private": true,
+      "language": "C++",
+      "pushedAt": "2026-04-09"
     }
   ],
   "publicRepos": [
@@ -546,6 +566,23 @@
         "CMake": 0.2,
         "Batchfile": 0.1,
         "CSS": 0.1
+      }
+    },
+    {
+      "date": "2026-10-07",
+      "repos": 7,
+      "bytes": 5487479,
+      "shares": {
+        "C++": 51.1,
+        "Python": 34.7,
+        "TypeScript": 11.5,
+        "PowerShell": 0.9,
+        "Shell": 0.6,
+        "JavaScript": 0.5,
+        "C": 0.3,
+        "CMake": 0.2,
+        "CSS": 0.2,
+        "Batchfile": 0.1
       }
     }
   ]
