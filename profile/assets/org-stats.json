@@ -4,83 +4,549 @@
   "repositories": {
     "total": 7,
     "public": 3,
-    "private": 4,
-    "names": [
-      ".github",
-      "Atlas-Navigation-Stack",
-      "Atlas-Robot",
-      "hotloop-coffee-runtime",
-      "Maze-Maze",
-      "Object-Detection",
-      "soul-robot"
-    ]
+    "private": 4
   },
   "languages": [
     {
       "name": "C++",
       "bytes": 2802919,
-      "percent": 50.3,
-      "color": "#f34b7d"
+      "percent": 50.3
     },
     {
       "name": "Python",
       "bytes": 1886075,
-      "percent": 33.8,
-      "color": "#3572A5"
+      "percent": 33.8
     },
     {
       "name": "TypeScript",
       "bytes": 744835,
-      "percent": 13.4,
-      "color": "#3178c6"
+      "percent": 13.4
     },
     {
       "name": "PowerShell",
       "bytes": 49552,
-      "percent": 0.9,
-      "color": "#012456"
+      "percent": 0.9
     },
     {
       "name": "Shell",
       "bytes": 31497,
-      "percent": 0.6,
-      "color": "#94a3b8"
+      "percent": 0.6
     },
     {
       "name": "JavaScript",
       "bytes": 24084,
-      "percent": 0.4,
-      "color": "#6b6426"
+      "percent": 0.4
     },
     {
       "name": "C",
       "bytes": 15629,
-      "percent": 0.3,
-      "color": "#94a3b8"
+      "percent": 0.3
     },
     {
       "name": "CMake",
       "bytes": 10540,
-      "percent": 0.2,
-      "color": "#2f8f4e"
+      "percent": 0.2
     },
     {
       "name": "Batchfile",
       "bytes": 7167,
-      "percent": 0.1,
-      "color": "#94a3b8"
+      "percent": 0.1
     },
     {
       "name": "CSS",
       "bytes": 4665,
-      "percent": 0.1,
-      "color": "#663399"
+      "percent": 0.1
     },
     {
       "name": "HTML",
       "bytes": 355,
-      "percent": 0.0,
-      "color": "#e34c26"
+      "percent": 0.0
+    }
+  ],
+  "activity": [
+    {
+      "private": false,
+      "language": "TypeScript",
+      "pushedAt": "2026-10-07",
+      "name": "quente-runtime",
+      "description": "operational multi-robot telemetry dashboard and control console"
+    },
+    {
+      "private": false,
+      "language": "C++",
+      "pushedAt": "2026-09-28",
+      "name": "soul-robot",
+      "description": "full custom robot for robocup rescue-line with raspberry pi and esp32"
+    }
+  ],
+  "publicRepos": [
+    {
+      "name": "soul-robot",
+      "description": "full custom robot for robocup rescue-line with raspberry pi and esp32",
+      "language": "C++",
+      "stars": 1,
+      "url": "https://github.com/ORC-Robotics/soul-robot",
+      "pushedAt": "2026-09-28"
+    },
+    {
+      "name": "quente-runtime",
+      "description": "operational multi-robot telemetry dashboard and control console",
+      "language": "TypeScript",
+      "stars": 0,
+      "url": "https://github.com/ORC-Robotics/quente-runtime",
+      "pushedAt": "2026-10-07"
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-04-08",
+      "repos": 6,
+      "bytes": 622741,
+      "shares": {
+        "C++": 46.5,
+        "Python": 29.9,
+        "TypeScript": 19.5,
+        "PowerShell": 2.3,
+        "Batchfile": 1.0,
+        "CSS": 0.7,
+        "JavaScript": 0.1,
+        "CMake": 0.1,
+        "HTML": 0.1
+      }
+    },
+    {
+      "date": "2026-04-09",
+      "repos": 6,
+      "bytes": 1021885,
+      "shares": {
+        "C++": 39.1,
+        "TypeScript": 28.5,
+        "Python": 28.0,
+        "JavaScript": 1.9,
+        "PowerShell": 1.2,
+        "Batchfile": 0.7,
+        "CSS": 0.4,
+        "Shell": 0.1,
+        "CMake": 0.1
+      }
+    },
+    {
+      "date": "2026-04-10",
+      "repos": 6,
+      "bytes": 1141460,
+      "shares": {
+        "C++": 45.7,
+        "TypeScript": 25.5,
+        "Python": 24.8,
+        "JavaScript": 1.7,
+        "PowerShell": 1.1,
+        "Batchfile": 0.6,
+        "CSS": 0.4,
+        "Shell": 0.1
+      }
+    },
+    {
+      "date": "2026-04-11",
+      "repos": 6,
+      "bytes": 1327144,
+      "shares": {
+        "C++": 42.5,
+        "TypeScript": 31.1,
+        "Python": 22.6,
+        "JavaScript": 1.5,
+        "PowerShell": 1.0,
+        "Batchfile": 0.5,
+        "CSS": 0.4,
+        "C": 0.2,
+        "Shell": 0.1
+      }
+    },
+    {
+      "date": "2026-04-12",
+      "repos": 6,
+      "bytes": 1380937,
+      "shares": {
+        "C++": 44.5,
+        "TypeScript": 29.9,
+        "Python": 21.8,
+        "JavaScript": 1.4,
+        "PowerShell": 1.2,
+        "Batchfile": 0.5,
+        "CSS": 0.3,
+        "C": 0.2,
+        "Shell": 0.1
+      }
+    },
+    {
+      "date": "2026-04-13",
+      "repos": 6,
+      "bytes": 1404061,
+      "shares": {
+        "C++": 46.8,
+        "TypeScript": 27.9,
+        "Python": 21.5,
+        "JavaScript": 1.4,
+        "PowerShell": 1.2,
+        "Batchfile": 0.5,
+        "CSS": 0.3,
+        "C": 0.2,
+        "Shell": 0.1
+      }
+    },
+    {
+      "date": "2026-04-14",
+      "repos": 6,
+      "bytes": 1483504,
+      "shares": {
+        "C++": 45.3,
+        "TypeScript": 29.0,
+        "Python": 21.4,
+        "JavaScript": 1.6,
+        "PowerShell": 1.4,
+        "Batchfile": 0.5,
+        "CSS": 0.3,
+        "C": 0.2,
+        "Shell": 0.2
+      }
+    },
+    {
+      "date": "2026-04-15",
+      "repos": 6,
+      "bytes": 1564545,
+      "shares": {
+        "C++": 43.1,
+        "TypeScript": 30.5,
+        "Python": 21.9,
+        "JavaScript": 1.5,
+        "PowerShell": 1.4,
+        "Shell": 0.6,
+        "Batchfile": 0.5,
+        "CSS": 0.3,
+        "C": 0.2
+      }
+    },
+    {
+      "date": "2026-04-16",
+      "repos": 6,
+      "bytes": 1751812,
+      "shares": {
+        "C++": 40.6,
+        "TypeScript": 34.0,
+        "Python": 21.4,
+        "JavaScript": 1.4,
+        "PowerShell": 1.3,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.3,
+        "C": 0.2
+      }
+    },
+    {
+      "date": "2026-04-18",
+      "repos": 6,
+      "bytes": 1810507,
+      "shares": {
+        "C++": 39.2,
+        "TypeScript": 36.1,
+        "Python": 20.7,
+        "JavaScript": 1.3,
+        "PowerShell": 1.3,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.3,
+        "C": 0.2
+      }
+    },
+    {
+      "date": "2026-04-19",
+      "repos": 6,
+      "bytes": 1820436,
+      "shares": {
+        "C++": 39.6,
+        "TypeScript": 35.9,
+        "Python": 20.6,
+        "JavaScript": 1.3,
+        "PowerShell": 1.3,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.3,
+        "C": 0.2
+      }
+    },
+    {
+      "date": "2026-04-23",
+      "repos": 6,
+      "bytes": 1867817,
+      "shares": {
+        "C++": 38.6,
+        "TypeScript": 37.5,
+        "Python": 20.0,
+        "JavaScript": 1.3,
+        "PowerShell": 1.3,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.2,
+        "C": 0.2
+      }
+    },
+    {
+      "date": "2026-04-24",
+      "repos": 6,
+      "bytes": 1907803,
+      "shares": {
+        "TypeScript": 38.4,
+        "C++": 37.8,
+        "Python": 20.0,
+        "JavaScript": 1.3,
+        "PowerShell": 1.2,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.2,
+        "C": 0.1
+      }
+    },
+    {
+      "date": "2026-04-25",
+      "repos": 6,
+      "bytes": 1924802,
+      "shares": {
+        "TypeScript": 38.7,
+        "C++": 37.4,
+        "Python": 20.1,
+        "JavaScript": 1.3,
+        "PowerShell": 1.2,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.2,
+        "C": 0.1
+      }
+    },
+    {
+      "date": "2026-04-27",
+      "repos": 6,
+      "bytes": 1653577,
+      "shares": {
+        "TypeScript": 45.0,
+        "C++": 27.3,
+        "Python": 23.4,
+        "JavaScript": 1.5,
+        "PowerShell": 1.4,
+        "Shell": 0.6,
+        "Batchfile": 0.4,
+        "CSS": 0.3
+      }
+    },
+    {
+      "date": "2026-04-29",
+      "repos": 6,
+      "bytes": 1685888,
+      "shares": {
+        "TypeScript": 44.2,
+        "C++": 28.7,
+        "Python": 23.0,
+        "JavaScript": 1.4,
+        "PowerShell": 1.4,
+        "Shell": 0.6,
+        "Batchfile": 0.4,
+        "CSS": 0.3
+      }
+    },
+    {
+      "date": "2026-05-05",
+      "repos": 6,
+      "bytes": 1694480,
+      "shares": {
+        "TypeScript": 44.0,
+        "C++": 29.1,
+        "Python": 22.8,
+        "JavaScript": 1.4,
+        "PowerShell": 1.4,
+        "Shell": 0.6,
+        "Batchfile": 0.4,
+        "CSS": 0.3
+      }
+    },
+    {
+      "date": "2026-05-06",
+      "repos": 6,
+      "bytes": 1713528,
+      "shares": {
+        "TypeScript": 43.5,
+        "C++": 29.9,
+        "Python": 22.6,
+        "JavaScript": 1.4,
+        "PowerShell": 1.4,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.3
+      }
+    },
+    {
+      "date": "2026-05-08",
+      "repos": 6,
+      "bytes": 1882628,
+      "shares": {
+        "TypeScript": 39.6,
+        "C++": 36.2,
+        "Python": 20.6,
+        "JavaScript": 1.3,
+        "PowerShell": 1.2,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-05-13",
+      "repos": 6,
+      "bytes": 1910918,
+      "shares": {
+        "TypeScript": 39.0,
+        "C++": 37.1,
+        "Python": 20.3,
+        "JavaScript": 1.3,
+        "PowerShell": 1.2,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-05-15",
+      "repos": 6,
+      "bytes": 1953258,
+      "shares": {
+        "C++": 38.5,
+        "TypeScript": 38.1,
+        "Python": 19.8,
+        "JavaScript": 1.2,
+        "PowerShell": 1.2,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-05-18",
+      "repos": 6,
+      "bytes": 1973514,
+      "shares": {
+        "C++": 39.1,
+        "TypeScript": 37.7,
+        "Python": 19.6,
+        "JavaScript": 1.2,
+        "PowerShell": 1.2,
+        "Shell": 0.5,
+        "Batchfile": 0.4,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-05-19",
+      "repos": 6,
+      "bytes": 2077425,
+      "shares": {
+        "C++": 42.2,
+        "TypeScript": 35.9,
+        "Python": 18.6,
+        "JavaScript": 1.2,
+        "PowerShell": 1.1,
+        "Shell": 0.4,
+        "Batchfile": 0.3,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-05-20",
+      "repos": 6,
+      "bytes": 2122744,
+      "shares": {
+        "C++": 43.4,
+        "TypeScript": 35.1,
+        "Python": 18.2,
+        "JavaScript": 1.1,
+        "PowerShell": 1.1,
+        "Shell": 0.4,
+        "Batchfile": 0.3,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-05-21",
+      "repos": 6,
+      "bytes": 2191650,
+      "shares": {
+        "C++": 45.2,
+        "TypeScript": 34.0,
+        "Python": 17.7,
+        "JavaScript": 1.1,
+        "PowerShell": 1.1,
+        "Shell": 0.4,
+        "Batchfile": 0.3,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-05-22",
+      "repos": 6,
+      "bytes": 2245502,
+      "shares": {
+        "C++": 46.5,
+        "TypeScript": 33.2,
+        "Python": 17.2,
+        "JavaScript": 1.1,
+        "PowerShell": 1.0,
+        "Shell": 0.4,
+        "Batchfile": 0.3,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-05-27",
+      "repos": 6,
+      "bytes": 2304359,
+      "shares": {
+        "C++": 47.9,
+        "TypeScript": 32.3,
+        "Python": 16.8,
+        "JavaScript": 1.0,
+        "PowerShell": 1.0,
+        "Shell": 0.4,
+        "Batchfile": 0.3,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-07-02",
+      "repos": 6,
+      "bytes": 2298875,
+      "shares": {
+        "C++": 47.7,
+        "TypeScript": 32.4,
+        "Python": 16.8,
+        "JavaScript": 1.0,
+        "PowerShell": 1.0,
+        "Shell": 0.4,
+        "Batchfile": 0.3,
+        "CSS": 0.2
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "repos": 7,
+      "bytes": 5577318,
+      "shares": {
+        "C++": 50.3,
+        "Python": 33.8,
+        "TypeScript": 13.4,
+        "PowerShell": 0.9,
+        "Shell": 0.6,
+        "JavaScript": 0.4,
+        "C": 0.3,
+        "CMake": 0.2,
+        "Batchfile": 0.1,
+        "CSS": 0.1
+      }
     }
   ]
 }

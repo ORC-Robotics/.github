@@ -1,61 +1,27 @@
-# ORC Robotics
-
-Robotics and AI engineering focused on real-world systems, computer vision and embedded development.
-
-Developed at SENAI ORC.
-
----
-
-## Organization Snapshot
+<p align="center">
+  <img src="./assets/header.svg" width="100%" alt="ORC Robotics — autonomous mobile robots engineered from scratch at SENAI ORC, Brazil: mechanics, electronics and software" />
+</p>
 
 <p align="center">
-  <img src="./assets/org-stats.svg" alt="ORC Robotics repository and language distribution snapshot" width="860" />
+  <img src="./assets/snapshot.svg" width="100%" alt="ORC Robotics snapshot: public and private repositories, language share over time and latest activity" />
 </p>
 
-<!-- stats:start -->
-- Repositories analyzed: `7 total` (`4 private`, `3 public`)
-- Language distribution by code footprint: `C++ 50.3%`, `Python 33.8%`, `TypeScript 13.4%`, `PowerShell 0.9%`, `Shell 0.6%`, `JavaScript 0.4%`
-- This snapshot includes private repositories without exposing internal source code.
-- Last updated: `2026-10-06 10:14 UTC`
-<!-- stats:end -->
-
-> Statistics are generated automatically through GitHub Actions and refreshed directly from the GitHub API once `ORG_STATS_TOKEN` is configured. This keeps the private repository snapshot accurate without cloning repositories to a local machine.
-
-## Current Languages
-
-<!-- languages:start -->
-<p align="left">
-  <img src="./assets/language-badges.svg" alt="Current ORC Robotics language badges" width="860" />
+<!-- repos:start -->
+<p align="center">
+  <a href="https://github.com/ORC-Robotics/soul-robot"><img src="./assets/repos/soul-robot.svg" width="49%" alt="soul-robot: full custom robot for robocup rescue-line with raspberry pi and esp32" /></a>
+  <a href="https://github.com/ORC-Robotics/quente-runtime"><img src="./assets/repos/quente-runtime.svg" width="49%" alt="quente-runtime: operational multi-robot telemetry dashboard and control console" /></a>
 </p>
+<!-- repos:end -->
 
-Active languages currently detected across ORC Robotics: `C++`, `Python`, `TypeScript`, `PowerShell`, `Shell`, `JavaScript`, `C`, `CMake`.
-<!-- languages:end -->
+<br />
 
----
+| | |
+|:--|:--|
+| **Engineering** | Mechanical design in CAD · Electrical design and custom PCBs · Firmware for ESP32 and Raspberry Pi · Robot software in ROS 2 and C++ · Computer vision · Telemetry and tooling |
+| **Focus** | Autonomous mobile robotics: navigation, perception and control, built as one integrated machine |
+| **Stack** | C++ · ROS 2 · Python · Java · TypeScript · OpenCV · ESP32 · Raspberry Pi · PCB design · CAD |
 
-## Focus Areas
-- Autonomous robotics
-- Computer vision
-- Embedded systems (ESP32, Raspberry Pi)
-- Competition engineering (WorldSkills, OBR)
-
----
-
-## Projects
-- Autonomous rescue robot for OBR, using computer vision for navigation and victim detection
-- Computer vision system for object and environment perception (OpenCV)
-- Modular robotic platform for rapid prototyping and testing
-
----
-
-## Stack
-- C++ / Python / TypeScript
-- OpenCV
-- ROS2 (future)
-- Embedded systems
-- Telemetry and operational dashboards
-
----
-
-## About
-We design and build high-performance robotic systems, combining mechanical design, electronics and software into fully integrated solutions.
+<p align="center">
+  <sub>We design and build robotic systems end to end — mechanics, electronics and software as one integrated machine.<br />
+  Stats refresh daily through GitHub Actions. Private repositories are counted, never exposed.</sub>
+</p>

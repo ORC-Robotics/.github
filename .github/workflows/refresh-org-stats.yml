@@ -9,7 +9,7 @@ on:
       - main
     paths:
       - profile/README.md
-      - scripts/generate_org_stats.py
+      - scripts/**
       - .github/workflows/refresh-org-stats.yml
 
 jobs:
@@ -27,23 +27,25 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install font tooling
+        run: pip install fonttools brotli
+
       - name: Generate organization stats
         env:
           ORG_STATS_TOKEN: ${{ secrets.ORG_STATS_TOKEN }}
         run: |
           python scripts/generate_org_stats.py \
             --org ORC-Robotics \
-            --readme profile/README.md \
-            --svg profile/assets/org-stats.svg \
-            --badges-svg profile/assets/language-badges.svg \
-            --json profile/assets/org-stats.json
+            --assets profile/assets \
+            --json profile/assets/org-stats.json \
+            --readme profile/README.md
 
       - name: Commit updated snapshot
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain)" ]; then
-            git add profile/README.md profile/assets/org-stats.svg profile/assets/language-badges.svg profile/assets/org-stats.json
+            git add -A profile
             git commit -m "Refresh organization stats"
             git push
           fi
