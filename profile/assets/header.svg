@@ -11,14 +11,7 @@
 <path d="M1 14a13 13 0 0 1 13-13H886a13 13 0 0 1 13 13V32H1Z" fill="#151412"/>
 <path d="M1 32.5H899" stroke="#fafaf9" stroke-opacity="0.08"/>
 <text x="450" y="21" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#a6a39c" text-anchor="middle">Built at <tspan fill="#fafaf9" font-weight="500">SENAI ORC</tspan>, Brazil — mechanical, electrical and software engineering for autonomous robots.  <tspan fill="#fafaf9" font-weight="500">Repositories below ↓</tspan></text>
-<text x="24" y="72" font-family="ORCSerif, Georgia, 'Times New Roman', serif" font-size="21" font-weight="500" fill="#fafaf9">ORC Robotics</text>
-<text x="153.93" y="71" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#85827c">by SENAI ORC</text>
-<rect x="282.19" y="50" width="335.63" height="32" rx="10" fill="#1a1917" stroke="#fafaf9" stroke-opacity="0.08"/>
-<rect x="285.19" y="53" width="74.76" height="26" rx="7" fill="#2a2825"/>
-<text x="322.57" y="70" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#fafaf9" text-anchor="middle">Robotics</text>
-<text x="404.6" y="70" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#a6a39c" text-anchor="middle">Mechanical</text>
-<text x="493.46" y="70" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#a6a39c" text-anchor="middle">Electronics</text>
-<text x="576.25" y="70" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="500" fill="#a6a39c" text-anchor="middle">Software</text>
+<text x="24" y="72" font-family="ORCSerif, Georgia, 'Times New Roman', serif" font-size="21" font-weight="500" fill="#fafaf9">ORC Robotics<tspan fill="#85827c" font-weight="400" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" dx="10" dy="-1">by SENAI ORC</tspan></text>
 <circle cx="678.55" cy="67" r="3.5" fill="#84c65c"/>
 <text x="876" y="71" font-family="ORCSans, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#a6a39c" text-anchor="end" class="n">Updated Oct 07, 02:42 UTC · <tspan fill="#fafaf9" font-weight="600">9 repos</tspan></text>
 <path d="M0 98.5H900" stroke="#fafaf9" stroke-opacity="0.08"/>
