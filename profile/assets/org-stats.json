@@ -1,53 +1,59 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-10-07 02:28 UTC",
+  "generatedAt": "2026-10-07 02:42 UTC",
   "repositories": {
-    "total": 7,
+    "total": 9,
     "public": 3,
-    "private": 4
+    "private": 6
   },
   "languages": [
     {
       "name": "C++",
-      "percent": 57.8,
+      "percent": 43.4,
       "projects": 4,
       "bytes": 2802919
     },
     {
       "name": "Python",
-      "percent": 26.2,
-      "projects": 3,
-      "bytes": 1867674
+      "percent": 30.8,
+      "projects": 5,
+      "bytes": 1900253
+    },
+    {
+      "name": "JavaScript",
+      "percent": 12.2,
+      "projects": 2,
+      "bytes": 515467
     },
     {
       "name": "TypeScript",
-      "percent": 13.9,
+      "percent": 10.4,
       "projects": 1,
       "bytes": 631071
     },
     {
-      "name": "JavaScript",
-      "percent": 0.6,
-      "projects": 1,
-      "bytes": 26046
+      "name": "Shell",
+      "percent": 1.2,
+      "projects": 2,
+      "bytes": 8767
+    },
+    {
+      "name": "Batchfile",
+      "percent": 1.1,
+      "projects": 2,
+      "bytes": 8429
     },
     {
       "name": "PowerShell",
-      "percent": 0.6,
+      "percent": 0.4,
       "projects": 1,
       "bytes": 8819
     },
     {
-      "name": "Batchfile",
-      "percent": 0.5,
+      "name": "CSS",
+      "percent": 0.3,
       "projects": 1,
-      "bytes": 7167
-    },
-    {
-      "name": "Shell",
-      "percent": 0.4,
-      "projects": 1,
-      "bytes": 7276
+      "bytes": 14042
     }
   ],
   "projects": [
@@ -63,6 +69,14 @@
     {
       "private": true,
       "languages": {
+        "JavaScript": 94.4,
+        "Python": 2.9,
+        "CSS": 2.7
+      }
+    },
+    {
+      "private": true,
+      "languages": {
         "C++": 100.0
       }
     },
@@ -73,6 +87,14 @@
         "Python": 46.8
       },
       "name": "soul-robot"
+    },
+    {
+      "private": true,
+      "languages": {
+        "Python": 86.3,
+        "Shell": 7.4,
+        "Batchfile": 6.3
+      }
     },
     {
       "private": true,
@@ -106,6 +128,11 @@
     },
     {
       "private": true,
+      "language": "JavaScript",
+      "pushedAt": "2026-10-06"
+    },
+    {
+      "private": true,
       "language": "C++",
       "pushedAt": "2026-10-06"
     },
@@ -118,18 +145,13 @@
     },
     {
       "private": true,
+      "language": "Python",
+      "pushedAt": "2026-07-09"
+    },
+    {
+      "private": true,
       "language": "C++",
       "pushedAt": "2026-05-22"
-    },
-    {
-      "private": true,
-      "language": "Python",
-      "pushedAt": "2026-04-15"
-    },
-    {
-      "private": true,
-      "language": "C++",
-      "pushedAt": "2026-04-09"
     }
   ],
   "publicRepos": [
