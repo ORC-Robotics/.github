@@ -174,6 +174,46 @@ def fetch_github_stats(org: str, token: str) -> list[dict]:
     return repos
 
 
+def annotate(level: str, title: str, message: str) -> None:
+    """Print a GitHub Actions annotation and add it to the run summary."""
+    print(f"::{level} title={title}::{message}")
+    summary = os.getenv("GITHUB_STEP_SUMMARY")
+    if summary:
+        with open(summary, "a", encoding="utf-8") as handle:
+            handle.write(f"**{title}**: {message}\n\n")
+
+
+def check_token_coverage(org: str, token: str, repos: list[dict]) -> None:
+    """Warn when the token sees fewer private repositories than the organization owns.
+
+    A fine-grained token limited to selected repositories silently misses
+    every repository created or transferred after it was issued.
+    """
+    seen = sum(1 for repo in repos if repo["private"])
+    try:
+        details = github_get(f"https://api.github.com/orgs/{org}", token)
+    except HTTPError as error:
+        annotate("notice", "Token coverage not checked", f"Could not read the organization ({error.code}).")
+        return
+
+    owned = details.get("owned_private_repos", details.get("total_private_repos"))
+    if owned is None:
+        annotate(
+            "notice",
+            "Token coverage not checked",
+            "The token cannot read the organization's private repository count (needs an organization owner).",
+        )
+    elif int(owned) > seen:
+        annotate(
+            "warning",
+            "ORG_STATS_TOKEN is missing repositories",
+            f"{org} has {owned} private repositories but the token can only see {seen}. "
+            "Give the token access to all repositories so every project is counted.",
+        )
+    else:
+        print(f"Token coverage OK: {seen} of {owned} private repositories visible.")
+
+
 def detect_language(path: Path) -> str | None:
     if path.name == "CMakeLists.txt":
         return "CMake"
@@ -905,6 +945,7 @@ def main() -> None:
         token = os.getenv(args.token_env, "").strip()
         if token:
             repos = fetch_github_stats(args.org, token)
+            check_token_coverage(args.org, token, repos)
         elif args.local_repo:
             repos = collect_local_repos(args.local_repo)
         else:
