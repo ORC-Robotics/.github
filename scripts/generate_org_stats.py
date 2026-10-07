@@ -561,7 +561,7 @@ def pill(svg: Svg, x_end: float, y: float, label: str, dot: str | None = None) -
 
 def build_header_svg(payload: dict[str, object]) -> str:
     W, H = 900, 300
-    svg = Svg(W, H, "ORC Robotics — autonomous mobile robots engineered from scratch at SENAI ORC: mechanics, electronics and software")
+    svg = Svg(W, H, "ORC Robotics — autonomous mobile robots engineered end to end at SENAI ORC: mechanics, electronics and software")
     svg.rect(0.5, 0.5, W - 1, H - 1, BG, rx=14, stroke=LINE, stroke_opacity="0.1")
 
     # Top strip
@@ -573,7 +573,7 @@ def build_header_svg(payload: dict[str, object]) -> str:
         [
             ("Built at ", {}),
             ("SENAI ORC", {"fill": TEXT, "weight": 500}),
-            (", Brazil — robotics engineered end to end: mechanics, electronics and software.  ", {}),
+            (", Brazil — mechanical, electrical and software engineering for autonomous robots.  ", {}),
             ("Repositories below ↓", {"fill": TEXT, "weight": 500}),
         ],
         size=11.5,
@@ -611,7 +611,7 @@ def build_header_svg(payload: dict[str, object]) -> str:
 
     # Headline
     svg.text(24, 152, [("Autonomous mobile robots", {"fill": BLUE}), (",", {})], size=40, font="serif", weight=500)
-    svg.text(24, 198, [("engineered from ", {}), ("scratch", {"fill": RED}), (".", {})], size=40, font="serif", weight=500)
+    svg.text(24, 198, [("engineered ", {}), ("end to end", {"fill": RED}), (".", {})], size=40, font="serif", weight=500)
     subtitle = wrap(
         "Mechanical CAD, electronics and custom PCBs, firmware and robot software — every layer designed "
         "and integrated in-house by a two-person team at SENAI ORC, with open-source contributors.",
@@ -634,7 +634,7 @@ def build_header_svg(payload: dict[str, object]) -> str:
     ch = 42 + len(layers) * 20 + 10
     svg.panel(cx, cy, cw, ch)
     svg.text(cx + 14, cy + 22, "Every layer, in-house", size=10.5, fill=MUTED)
-    pill(svg, cx + cw - 12, cy + 9, "from scratch", dot=GREEN)
+    pill(svg, cx + cw - 12, cy + 9, "full stack", dot=GREEN)
     for index, (name, tools, color) in enumerate(layers):
         ry = cy + 40 + index * 20
         svg.rect(cx + 14, ry, cw - 28, 16, color, rx=4, fill_opacity="0.09")

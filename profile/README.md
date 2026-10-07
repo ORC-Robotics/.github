@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/header.svg" width="100%" alt="ORC Robotics — autonomous mobile robots engineered from scratch at SENAI ORC, Brazil: mechanics, electronics and software" />
+  <img src="./assets/header.svg" width="100%" alt="ORC Robotics — autonomous mobile robots engineered end to end at SENAI ORC, Brazil: mechanics, electronics and software" />
 </p>
 
 <p align="center">
