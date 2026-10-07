@@ -7,8 +7,8 @@ public repository (repos/<name>.svg). The SVGs embed subset Faustina and
 Geist fonts, because GitHub renders README images without network access.
 
 When the fetched data matches the previous JSON, the previous timestamp
-and history are kept, so the output is byte-identical and the workflow
-has nothing to commit.
+is kept, so the output is byte-identical and the workflow has nothing
+to commit.
 """
 from __future__ import annotations
 
@@ -140,9 +140,8 @@ def github_get(url: str, token: str) -> object:
         return json.load(response)
 
 
-def fetch_github_stats(org: str, token: str) -> tuple[list[dict], dict[str, int]]:
+def fetch_github_stats(org: str, token: str) -> list[dict]:
     repos: list[dict] = []
-    language_totals: dict[str, int] = defaultdict(int)
     page = 1
 
     while True:
@@ -152,6 +151,10 @@ def fetch_github_stats(org: str, token: str) -> tuple[list[dict], dict[str, int]
             break
 
         for item in items:
+            try:
+                languages = github_get(item["languages_url"], token)
+            except HTTPError:
+                languages = {}
             repos.append(
                 {
                     "name": item["name"],
@@ -162,19 +165,13 @@ def fetch_github_stats(org: str, token: str) -> tuple[list[dict], dict[str, int]
                     "stars": int(item.get("stargazers_count") or 0),
                     "url": item.get("html_url") or "",
                     "pushedAt": (item.get("pushed_at") or "")[:10],
+                    "languages": {language: int(size) for language, size in languages.items()},
                 }
             )
-            try:
-                languages = github_get(item["languages_url"], token)
-            except HTTPError:
-                continue
-
-            for language, size in languages.items():
-                language_totals[language] += int(size)
 
         page += 1
 
-    return repos, dict(language_totals)
+    return repos
 
 
 def detect_language(path: Path) -> str | None:
@@ -202,33 +199,59 @@ def analyze_local_repo(path: Path) -> dict[str, int]:
     return dict(totals)
 
 
-def merge_local_stats(repo_args: Iterable[str]) -> tuple[list[dict], dict[str, int]]:
+def collect_local_repos(repo_args: Iterable[str]) -> list[dict]:
     repos: list[dict] = []
-    language_totals: dict[str, int] = defaultdict(int)
-
     for value in repo_args:
         name, visibility, raw_path = value.split("|", 2)
-        repos.append({"name": name, "private": visibility == "private"})
-        for language, size in analyze_local_repo(Path(raw_path)).items():
-            language_totals[language] += size
+        repos.append(
+            {"name": name, "private": visibility == "private", "languages": analyze_local_repo(Path(raw_path))}
+        )
+    return repos
 
-    return repos, dict(language_totals)
+
+# A language below this share of a single project is treated as incidental
+# (a build script, a helper file) and left out of that project's mix.
+MIN_PROJECT_SHARE = 2.0
 
 
-def summarize_languages(language_totals: dict[str, int]) -> list[dict[str, object]]:
-    total = sum(language_totals.values())
+def project_mix(language_bytes: dict[str, int]) -> dict[str, float]:
+    total = sum(language_bytes.values())
     if total == 0:
+        return {}
+    kept = {language: size for language, size in language_bytes.items() if size * 100 / total >= MIN_PROJECT_SHARE}
+    kept_total = sum(kept.values())
+    mix = {language: round(size * 100 / kept_total, 1) for language, size in kept.items()}
+    return dict(sorted(mix.items(), key=lambda item: (-item[1], item[0])))
+
+
+def summarize_languages(projects: list[dict]) -> list[dict[str, object]]:
+    """Every project gets one equal vote, split across the languages it uses.
+
+    Weighting by bytes let one large C++ codebase hide whole projects
+    written in other languages; this shows what the team actually works in.
+    """
+    if not projects:
         return []
 
-    items = sorted(language_totals.items(), key=lambda item: (-item[1], item[0]))
+    shares: dict[str, float] = defaultdict(float)
+    counts: dict[str, int] = defaultdict(int)
+    sizes: dict[str, int] = defaultdict(int)
+    for project in projects:
+        for language, percent in project["languages"].items():
+            shares[language] += percent / len(projects)
+            counts[language] += 1
+        for language, size in project["bytes"].items():
+            sizes[language] += size
+
+    ranked = sorted(shares.items(), key=lambda item: (-item[1], -counts[item[0]], item[0]))
     return [
-        {"name": language, "bytes": size, "percent": round(size * 100 / total, 1)}
-        for language, size in items
+        {"name": language, "percent": round(share, 1), "projects": counts[language], "bytes": sizes[language]}
+        for language, share in ranked
     ]
 
 
-def build_data(repos: list[dict], language_totals: dict[str, int]) -> dict[str, object]:
-    """Everything that is compared between runs (no timestamp, no history)."""
+def build_data(repos: list[dict]) -> dict[str, object]:
+    """Everything that is compared between runs (no timestamp)."""
     visible = [repo for repo in repos if repo["name"] != PROFILE_REPO]
     recent = sorted(
         (repo for repo in visible if repo.get("pushedAt")),
@@ -236,7 +259,7 @@ def build_data(repos: list[dict], language_totals: dict[str, int]) -> dict[str, 
         reverse=True,
     )
 
-    # Private repositories are counted and shown as anonymous activity only:
+    # Private repositories are counted and shown anonymously only:
     # no names or descriptions leave the organization.
     activity = []
     for repo in recent[:6]:
@@ -245,6 +268,17 @@ def build_data(repos: list[dict], language_totals: dict[str, int]) -> dict[str, 
             entry["name"] = repo["name"]
             entry["description"] = repo.get("description", "")
         activity.append(entry)
+
+    projects = []
+    for repo in sorted(visible, key=lambda repo: (repo.get("pushedAt", ""), repo["name"].lower()), reverse=True):
+        mix = project_mix(repo.get("languages", {}))
+        if not mix:
+            continue
+        project = {"private": repo["private"], "languages": mix}
+        if not repo["private"]:
+            project["name"] = repo["name"]
+        project["bytes"] = {language: size for language, size in repo["languages"].items() if language in mix}
+        projects.append(project)
 
     public_repos = [
         {
@@ -265,42 +299,24 @@ def build_data(repos: list[dict], language_totals: dict[str, int]) -> dict[str, 
             "public": sum(1 for repo in repos if not repo["private"]),
             "private": sum(1 for repo in repos if repo["private"]),
         },
-        "languages": summarize_languages(language_totals),
+        "languages": summarize_languages(projects),
+        "projects": [{key: value for key, value in project.items() if key != "bytes"} for project in projects],
         "activity": activity,
         "publicRepos": public_repos,
     }
 
 
-def history_point(date: str, data: dict[str, object]) -> dict[str, object]:
-    languages = data["languages"]
-    return {
-        "date": date,
-        "repos": data["repositories"]["total"],
-        "bytes": sum(int(language["bytes"]) for language in languages),
-        "shares": {language["name"]: language["percent"] for language in languages if language["percent"] >= 0.1},
-    }
-
-
-COMPARED_KEYS = ("repositories", "languages", "activity", "publicRepos")
+COMPARED_KEYS = ("repositories", "languages", "projects", "activity", "publicRepos")
 
 
 def merge_with_previous(org: str, data: dict[str, object], previous: dict[str, object] | None) -> dict[str, object]:
     if previous and all(previous.get(key) == data[key] for key in COMPARED_KEYS):
         return previous
 
-    now = datetime.now(timezone.utc)
-    history = list(previous.get("history", [])) if previous else []
-    point = history_point(now.strftime("%Y-%m-%d"), data)
-    if history and history[-1]["date"] == point["date"]:
-        history[-1] = point
-    else:
-        history.append(point)
-
     return {
         "organization": org,
-        "generatedAt": now.strftime("%Y-%m-%d %H:%M UTC"),
+        "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         **data,
-        "history": history,
     }
 
 
@@ -659,65 +675,57 @@ def draw_visibility_panel(svg: Svg, x: float, y: float, w: float, h: float, payl
     svg.text(right, y + 258, f"{human_bytes(total_bytes)} · {len(languages)} languages", size=11, weight=500, anchor="end", cls="n")
 
 
-def draw_history_panel(svg: Svg, x: float, y: float, w: float, h: float, payload: dict) -> None:
+def truncate(text: str, width: float, size: float, weight: int = 400) -> str:
+    if text_width(text, size, "sans", weight) <= width:
+        return text
+    while text and text_width(text + "…", size, "sans", weight) > width:
+        text = text[:-1]
+    return text.rstrip(" -_.") + "…"
+
+
+def plural(count: int, word: str) -> str:
+    return f"{count} {word}" + ("" if count == 1 else "s")
+
+
+def draw_projects_panel(svg: Svg, x: float, y: float, w: float, h: float, payload: dict) -> None:
     svg.panel(x, y, w, h)
-    svg.text(x + 16, y + 26, "Language share over time", size=12.5, weight=500)
+    svg.text(x + 16, y + 26, "Project mix", size=12.5, weight=500)
+    svg.text(x + w - 16, y + 26, "languages per project", size=10.5, fill=DIM, anchor="end")
 
-    history = payload.get("history", [])
-    tracked = [language["name"] for language in payload["languages"][:3]]
-
-    lx = x + 16
-    for name in tracked:
-        color = language_color(name)
-        svg.add(f'<path d="M{fmt(lx)} {fmt(y + 43)}h10" stroke="{color}" stroke-width="2" stroke-linecap="round"/>')
-        svg.text(lx + 15, y + 47, name, size=10.5, fill=TEXT_2)
-        lx += 15 + text_width(name, 10.5) + 14
-
-    left, right = x + 40, x + w - 18
-    top, bottom = y + 66, y + h - 36
-    if len(history) < 2:
-        svg.text(x + w / 2, (top + bottom) / 2, "History starts with the next change", size=11, fill=DIM, anchor="middle")
+    projects = payload.get("projects", [])
+    if not projects:
+        svg.text(x + w / 2, y + h / 2, "No projects with code yet", size=11, fill=DIM, anchor="middle")
         return
 
-    peak = max(float(point["shares"].get(name, 0)) for point in history for name in tracked)
-    step = 20 if peak > 40 else 10
-    y_max = max(step, step * -(-peak // step))
+    label_w = 88
+    bar_x = x + 16 + label_w + 8
+    bar_w = x + w - 16 - bar_x
+    row_h = min(26.0, (h - 52) / len(projects))
+    shown = projects[: int((h - 52) // row_h)]
+    for index, project in enumerate(shown):
+        ry = y + 46 + index * row_h
+        if project.get("private"):
+            svg.text(x + 16, ry + 10, "Private project", size=11, fill=DIM)
+        else:
+            svg.text(x + 16, ry + 10, truncate(str(project["name"]), label_w, 11, 500), size=11, weight=500, fill=TEXT_2)
 
-    def ypos(value: float) -> float:
-        return bottom - (bottom - top) * value / y_max
-
-    tick = 0
-    while tick <= y_max:
-        svg.hline(left, right, ypos(tick), opacity=0.06 if tick else 0.14)
-        svg.text(left - 8, ypos(tick) + 3.5, f"{tick:.0f}%", size=9.5, fill=DIM, anchor="end", cls="n")
-        tick += step
-
-    dates = [datetime.strptime(point["date"], "%Y-%m-%d") for point in history]
-    span = max(1.0, (dates[-1] - dates[0]).total_seconds())
-
-    def xpos(date: datetime) -> float:
-        return left + (right - left) * (date - dates[0]).total_seconds() / span
-
-    for name in reversed(tracked):
-        color = language_color(name)
-        points = [(xpos(date), ypos(float(point["shares"].get(name, 0)))) for date, point in zip(dates, history)]
-        d = "M" + "L".join(f"{fmt(px)} {fmt(py)}" for px, py in points)
-        svg.add(f'<path d="{d}" fill="none" stroke="{color}" stroke-width="1.75" stroke-linejoin="round"/>')
-        end_x, end_y = points[-1]
-        svg.add(f'<circle cx="{fmt(end_x)}" cy="{fmt(end_y)}" r="3.5" fill="{color}" stroke="{PANEL}" stroke-width="2"/>')
-
-    svg.text(left, bottom + 18, short_date(history[0]["date"]), size=9.5, fill=DIM, cls="n")
-    svg.text(right, bottom + 18, short_date(history[-1]["date"]), size=9.5, fill=DIM, anchor="end", cls="n")
-    svg.text((left + right) / 2, bottom + 18, f"{len(history)} snapshots", size=9.5, fill=DIM, anchor="middle", cls="n")
+        cursor = bar_x
+        segments = list(project["languages"].items())
+        gaps = 2 * (len(segments) - 1)
+        for language, percent in segments:
+            seg_w = max(2.0, (bar_w - gaps) * float(percent) / 100)
+            color = language_color(language)
+            svg.rect(cursor, ry, seg_w, 13, color, rx=3)
+            short = LANGUAGE_SHORT.get(language, language[:2])
+            if seg_w >= text_width(short, 8.5, "sans", 600) + 8:
+                svg.text(cursor + seg_w / 2, ry + 9.5, short, size=8.5, weight=600, fill=BG, anchor="middle")
+            cursor += seg_w + 2
 
 
 def draw_languages_panel(svg: Svg, x: float, y: float, w: float, h: float, payload: dict) -> None:
     svg.panel(x, y, w, h)
     svg.text(x + 16, y + 26, "By language", size=12.5, weight=500)
-    svg.text(x + w - 16, y + 26, "share of code · change", size=10.5, fill=DIM, anchor="end")
-
-    history = payload.get("history", [])
-    previous = history[-2]["shares"] if len(history) >= 2 else None
+    svg.text(x + w - 16, y + 26, "each project counts equally", size=10.5, fill=DIM, anchor="end")
 
     rows = build_language_rows(payload["languages"])
     row_h = min(48.0, (h - 48) / max(1, len(rows)))
@@ -733,22 +741,13 @@ def draw_languages_panel(svg: Svg, x: float, y: float, w: float, h: float, paylo
         svg.text(x + 29, ry + 19, LANGUAGE_SHORT.get(name, name[:2]), size=9, weight=600, fill=color, anchor="middle")
 
         svg.text(x + 52, ry + 13, name, size=12.5, weight=500)
-        sub = human_bytes(int(language["bytes"]))
         if name == "Other":
-            sub = f"{language['count']} languages · {sub}"
+            sub = f"{language['count']} languages · {human_bytes(int(language['bytes']))}"
+        else:
+            sub = f"{plural(int(language['projects']), 'project')} · {human_bytes(int(language['bytes']))}"
         svg.text(x + 52, ry + 28, sub, size=10.5, fill=DIM, cls="n")
 
-        svg.text(x + w - 58, ry + 14, f"{percent:.1f}%", size=13, weight=600, anchor="end", cls="n")
-        delta_text, delta_color = "—", DIM
-        if previous is not None and name != "Other":
-            delta = round(percent - float(previous.get(name, 0)), 1)
-            if delta > 0:
-                delta_text, delta_color = f"+{delta:.1f}", GREEN
-            elif delta < 0:
-                delta_text, delta_color = f"−{abs(delta):.1f}", RED
-            else:
-                delta_text = "0.0"
-        svg.text(x + w - 16, ry + 14, delta_text, size=10.5, weight=500, fill=delta_color, anchor="end", cls="n")
+        svg.text(x + w - 16, ry + 14, f"{percent:.1f}%", size=13, weight=600, anchor="end", cls="n")
 
         bar_x, bar_w = x + w - 132, 116
         svg.rect(bar_x, ry + 23, bar_w, 4, LINE, rx=2, fill_opacity="0.07")
@@ -807,7 +806,7 @@ def build_snapshot_svg(payload: dict[str, object]) -> str:
     col_w, gap = 292, 12
     c1, c2, c3 = 0, col_w + gap, 2 * (col_w + gap)
     draw_visibility_panel(svg, c1, 0, col_w, 272, payload)
-    draw_history_panel(svg, c1, 284, col_w, H - 284, payload)
+    draw_projects_panel(svg, c1, 284, col_w, H - 284, payload)
     draw_languages_panel(svg, c2, 0, col_w, H, payload)
     draw_activity_panel(svg, c3, 0, col_w, H, payload)
     return svg.render()
@@ -905,12 +904,12 @@ def main() -> None:
     else:
         token = os.getenv(args.token_env, "").strip()
         if token:
-            repos, language_totals = fetch_github_stats(args.org, token)
+            repos = fetch_github_stats(args.org, token)
         elif args.local_repo:
-            repos, language_totals = merge_local_stats(args.local_repo)
+            repos = collect_local_repos(args.local_repo)
         else:
             raise SystemExit("No GitHub token or local repositories were provided.")
-        payload = merge_with_previous(args.org, build_data(repos, language_totals), previous)
+        payload = merge_with_previous(args.org, build_data(repos), previous)
         write_text(json_path, json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
 
     assets = Path(args.assets)

@@ -6,7 +6,9 @@ This repository powers the public organization profile shown at [github.com/ORC-
 - Generated assets live in `profile/assets/`: `header.svg`, `snapshot.svg`, one card per public repository in `repos/`, and the `org-stats.json` they are drawn from
 - The generator lives in `scripts/generate_org_stats.py`; the refresh workflow lives in `.github/workflows/refresh-org-stats.yml`
 
-The workflow runs daily and on pushes to `main`. When nothing changed in the organization, the output is byte-identical and nothing is committed. `org-stats.json` keeps a history of every change, which feeds the "language share over time" chart.
+The workflow runs daily and on pushes to `main`. When nothing changed in the organization, the output is byte-identical and nothing is committed.
+
+Language share is weighted per project: every repository gets one equal vote, split across the languages it uses, so a small project is not hidden by a large one. Languages under 2% of a single project are treated as incidental, and this `.github` repository is left out.
 
 - `ORG_STATS_TOKEN` lets the workflow include private ORC-Robotics repositories. It needs read access to the organization's repositories. Private repositories are counted and shown as anonymous activity; their names and descriptions are never written to the profile.
 - To redraw the SVGs after a design change without calling the API: `python scripts/generate_org_stats.py --org ORC-Robotics --assets profile/assets --json profile/assets/org-stats.json --readme profile/README.md --render-only` (needs `pip install fonttools brotli`).
