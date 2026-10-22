@@ -1,57 +1,63 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-10-21 08:31 UTC",
+  "generatedAt": "2026-10-22 08:34 UTC",
   "repositories": {
-    "total": 10,
+    "total": 11,
     "public": 3,
-    "private": 7
+    "private": 8
   },
   "languages": [
     {
       "name": "C++",
-      "percent": 46.0,
+      "percent": 41.4,
       "projects": 5,
       "bytes": 3456760
     },
     {
       "name": "Python",
-      "percent": 30.1,
-      "projects": 6,
-      "bytes": 1979785
+      "percent": 30.5,
+      "projects": 7,
+      "bytes": 2012600
     },
     {
       "name": "JavaScript",
-      "percent": 10.8,
-      "projects": 2,
-      "bytes": 517978
+      "percent": 10.0,
+      "projects": 3,
+      "bytes": 520695
     },
     {
       "name": "TypeScript",
-      "percent": 9.3,
+      "percent": 8.3,
       "projects": 1,
       "bytes": 631071
     },
     {
+      "name": "HTML",
+      "percent": 6.3,
+      "projects": 1,
+      "bytes": 60315
+    },
+    {
       "name": "Shell",
-      "percent": 1.8,
+      "percent": 1.6,
       "projects": 3,
       "bytes": 27322
     },
     {
       "name": "Batchfile",
-      "percent": 1.0,
+      "percent": 0.9,
       "projects": 2,
       "bytes": 8429
     },
     {
       "name": "PowerShell",
-      "percent": 0.4,
+      "percent": 0.3,
       "projects": 1,
       "bytes": 8819
     },
     {
       "name": "CMake",
-      "percent": 0.4,
+      "percent": 0.3,
       "projects": 1,
       "bytes": 9998
     },
@@ -63,6 +69,14 @@
     }
   ],
   "projects": [
+    {
+      "private": true,
+      "languages": {
+        "HTML": 62.9,
+        "Python": 34.2,
+        "JavaScript": 2.8
+      }
+    },
     {
       "private": true,
       "languages": {
@@ -136,8 +150,13 @@
   "activity": [
     {
       "private": true,
+      "language": "HTML",
+      "pushedAt": "2026-10-22"
+    },
+    {
+      "private": true,
       "language": "C++",
-      "pushedAt": "2026-10-20"
+      "pushedAt": "2026-10-21"
     },
     {
       "private": true,
@@ -162,11 +181,6 @@
       "pushedAt": "2026-10-07",
       "name": "quente-runtime",
       "description": "operational multi-robot telemetry dashboard and control console"
-    },
-    {
-      "private": true,
-      "language": "Python",
-      "pushedAt": "2026-07-09"
     }
   ],
   "publicRepos": [
