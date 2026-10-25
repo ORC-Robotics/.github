@@ -1,6 +1,6 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-10-22 08:34 UTC",
+  "generatedAt": "2026-10-25 08:22 UTC",
   "repositories": {
     "total": 11,
     "public": 3,
@@ -72,6 +72,14 @@
     {
       "private": true,
       "languages": {
+        "JavaScript": 93.8,
+        "Python": 3.5,
+        "CSS": 2.7
+      }
+    },
+    {
+      "private": true,
+      "languages": {
         "HTML": 62.9,
         "Python": 34.2,
         "JavaScript": 2.8
@@ -84,14 +92,6 @@
         "Python": 24.1,
         "Shell": 5.9,
         "CMake": 3.2
-      }
-    },
-    {
-      "private": true,
-      "languages": {
-        "JavaScript": 93.8,
-        "Python": 3.5,
-        "CSS": 2.7
       }
     },
     {
@@ -150,18 +150,18 @@
   "activity": [
     {
       "private": true,
+      "language": "JavaScript",
+      "pushedAt": "2026-10-24"
+    },
+    {
+      "private": true,
       "language": "HTML",
-      "pushedAt": "2026-10-22"
+      "pushedAt": "2026-10-24"
     },
     {
       "private": true,
       "language": "C++",
-      "pushedAt": "2026-10-21"
-    },
-    {
-      "private": true,
-      "language": "JavaScript",
-      "pushedAt": "2026-10-15"
+      "pushedAt": "2026-10-24"
     },
     {
       "private": true,
