@@ -9,7 +9,6 @@
 <!-- repos:start -->
 <p align="center">
   <a href="https://github.com/ORC-Robotics/soul-robot"><img src="./assets/repos/soul-robot.svg" width="49%" alt="soul-robot: Autonomous rescue robot — Raspberry Pi + ESP32, onboard vision and YOLO victim detection." /></a>
-  <a href="https://github.com/ORC-Robotics/quente-runtime"><img src="./assets/repos/quente-runtime.svg" width="49%" alt="quente-runtime: operational multi-robot telemetry dashboard and control console" /></a>
 </p>
 <!-- repos:end -->
 

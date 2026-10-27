@@ -1,10 +1,10 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-10-25 08:22 UTC",
+  "generatedAt": "2026-10-27 08:56 UTC",
   "repositories": {
     "total": 11,
-    "public": 3,
-    "private": 8
+    "public": 2,
+    "private": 9
   },
   "languages": [
     {
@@ -15,15 +15,15 @@
     },
     {
       "name": "Python",
-      "percent": 30.5,
+      "percent": 30.6,
       "projects": 7,
-      "bytes": 2012600
+      "bytes": 2021147
     },
     {
       "name": "JavaScript",
-      "percent": 10.0,
+      "percent": 9.8,
       "projects": 3,
-      "bytes": 520695
+      "bytes": 656306
     },
     {
       "name": "TypeScript",
@@ -50,6 +50,12 @@
       "bytes": 8429
     },
     {
+      "name": "CSS",
+      "percent": 0.4,
+      "projects": 1,
+      "bytes": 26164
+    },
+    {
       "name": "PowerShell",
       "percent": 0.3,
       "projects": 1,
@@ -60,29 +66,15 @@
       "percent": 0.3,
       "projects": 1,
       "bytes": 9998
-    },
-    {
-      "name": "CSS",
-      "percent": 0.3,
-      "projects": 1,
-      "bytes": 14042
     }
   ],
   "projects": [
     {
       "private": true,
       "languages": {
-        "JavaScript": 93.8,
-        "Python": 3.5,
-        "CSS": 2.7
-      }
-    },
-    {
-      "private": true,
-      "languages": {
-        "HTML": 62.9,
-        "Python": 34.2,
-        "JavaScript": 2.8
+        "JavaScript": 92.2,
+        "Python": 3.9,
+        "CSS": 3.8
       }
     },
     {
@@ -92,6 +84,14 @@
         "Python": 24.1,
         "Shell": 5.9,
         "CMake": 3.2
+      }
+    },
+    {
+      "private": true,
+      "languages": {
+        "HTML": 62.9,
+        "Python": 34.2,
+        "JavaScript": 2.8
       }
     },
     {
@@ -109,13 +109,12 @@
       "name": "soul-robot"
     },
     {
-      "private": false,
+      "private": true,
       "languages": {
         "TypeScript": 83.4,
         "Python": 13.1,
         "JavaScript": 3.4
-      },
-      "name": "quente-runtime"
+      }
     },
     {
       "private": true,
@@ -151,16 +150,16 @@
     {
       "private": true,
       "language": "JavaScript",
-      "pushedAt": "2026-10-24"
-    },
-    {
-      "private": true,
-      "language": "HTML",
-      "pushedAt": "2026-10-24"
+      "pushedAt": "2026-10-27"
     },
     {
       "private": true,
       "language": "C++",
+      "pushedAt": "2026-10-26"
+    },
+    {
+      "private": true,
+      "language": "HTML",
       "pushedAt": "2026-10-24"
     },
     {
@@ -176,11 +175,9 @@
       "description": "Autonomous rescue robot — Raspberry Pi + ESP32, onboard vision and YOLO victim detection."
     },
     {
-      "private": false,
+      "private": true,
       "language": "TypeScript",
-      "pushedAt": "2026-10-07",
-      "name": "quente-runtime",
-      "description": "operational multi-robot telemetry dashboard and control console"
+      "pushedAt": "2026-10-07"
     }
   ],
   "publicRepos": [
@@ -190,14 +187,6 @@
       "language": "C++",
       "stars": 1,
       "url": "https://github.com/ORC-Robotics/soul-robot",
-      "pushedAt": "2026-10-07"
-    },
-    {
-      "name": "quente-runtime",
-      "description": "operational multi-robot telemetry dashboard and control console",
-      "language": "TypeScript",
-      "stars": 0,
-      "url": "https://github.com/ORC-Robotics/quente-runtime",
       "pushedAt": "2026-10-07"
     }
   ]
