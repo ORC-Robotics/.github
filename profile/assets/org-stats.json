@@ -1,6 +1,6 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-10-27 08:56 UTC",
+  "generatedAt": "2026-10-29 09:55 UTC",
   "repositories": {
     "total": 11,
     "public": 2,
@@ -9,21 +9,21 @@
   "languages": [
     {
       "name": "C++",
-      "percent": 41.4,
+      "percent": 41.7,
       "projects": 5,
-      "bytes": 3456760
+      "bytes": 3582053
     },
     {
       "name": "Python",
-      "percent": 30.6,
+      "percent": 30.5,
       "projects": 7,
-      "bytes": 2021147
+      "bytes": 2053640
     },
     {
       "name": "JavaScript",
-      "percent": 9.8,
+      "percent": 9.9,
       "projects": 3,
-      "bytes": 656306
+      "bytes": 703450
     },
     {
       "name": "TypeScript",
@@ -33,15 +33,15 @@
     },
     {
       "name": "HTML",
-      "percent": 6.3,
+      "percent": 6.2,
       "projects": 1,
       "bytes": 60315
     },
     {
       "name": "Shell",
-      "percent": 1.6,
+      "percent": 1.4,
       "projects": 3,
-      "bytes": 27322
+      "bytes": 29473
     },
     {
       "name": "Batchfile",
@@ -53,45 +53,45 @@
       "name": "CSS",
       "percent": 0.4,
       "projects": 1,
-      "bytes": 26164
+      "bytes": 29118
+    },
+    {
+      "name": "CMake",
+      "percent": 0.3,
+      "projects": 1,
+      "bytes": 16234
     },
     {
       "name": "PowerShell",
       "percent": 0.3,
       "projects": 1,
       "bytes": 8819
-    },
-    {
-      "name": "CMake",
-      "percent": 0.3,
-      "projects": 1,
-      "bytes": 9998
     }
   ],
   "projects": [
     {
       "private": true,
       "languages": {
-        "JavaScript": 92.2,
-        "Python": 3.9,
-        "CSS": 3.8
+        "JavaScript": 92.5,
+        "CSS": 4.0,
+        "Python": 3.5
       }
     },
     {
       "private": true,
       "languages": {
-        "C++": 66.9,
-        "Python": 24.1,
-        "Shell": 5.9,
-        "CMake": 3.2
-      }
-    },
-    {
-      "private": true,
-      "languages": {
-        "HTML": 62.9,
-        "Python": 34.2,
+        "HTML": 62.1,
+        "Python": 35.1,
         "JavaScript": 2.8
+      }
+    },
+    {
+      "private": true,
+      "languages": {
+        "C++": 69.8,
+        "Python": 22.5,
+        "Shell": 4.3,
+        "CMake": 3.4
       }
     },
     {
@@ -150,17 +150,17 @@
     {
       "private": true,
       "language": "JavaScript",
-      "pushedAt": "2026-10-27"
-    },
-    {
-      "private": true,
-      "language": "C++",
-      "pushedAt": "2026-10-26"
+      "pushedAt": "2026-10-28"
     },
     {
       "private": true,
       "language": "HTML",
-      "pushedAt": "2026-10-24"
+      "pushedAt": "2026-10-28"
+    },
+    {
+      "private": true,
+      "language": "C++",
+      "pushedAt": "2026-10-28"
     },
     {
       "private": true,
