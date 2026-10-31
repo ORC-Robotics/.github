@@ -1,6 +1,6 @@
 {
   "organization": "ORC-Robotics",
-  "generatedAt": "2026-10-30 09:58 UTC",
+  "generatedAt": "2026-10-31 09:35 UTC",
   "repositories": {
     "total": 11,
     "public": 2,
@@ -15,15 +15,15 @@
     },
     {
       "name": "Python",
-      "percent": 30.5,
+      "percent": 30.4,
       "projects": 7,
       "bytes": 2054476
     },
     {
       "name": "JavaScript",
-      "percent": 9.9,
+      "percent": 9.8,
       "projects": 3,
-      "bytes": 764979
+      "bytes": 811329
     },
     {
       "name": "TypeScript",
@@ -51,9 +51,9 @@
     },
     {
       "name": "CSS",
-      "percent": 0.4,
+      "percent": 0.5,
       "projects": 1,
-      "bytes": 34015
+      "bytes": 38209
     },
     {
       "name": "PowerShell",
@@ -72,9 +72,17 @@
     {
       "private": true,
       "languages": {
-        "JavaScript": 92.4,
-        "CSS": 4.3,
-        "Python": 3.4
+        "HTML": 62.1,
+        "Python": 35.1,
+        "JavaScript": 2.8
+      }
+    },
+    {
+      "private": true,
+      "languages": {
+        "JavaScript": 92.3,
+        "CSS": 4.5,
+        "Python": 3.2
       }
     },
     {
@@ -84,14 +92,6 @@
         "Python": 22.4,
         "Shell": 4.3,
         "CMake": 3.3
-      }
-    },
-    {
-      "private": true,
-      "languages": {
-        "HTML": 62.1,
-        "Python": 35.1,
-        "JavaScript": 2.8
       }
     },
     {
@@ -149,18 +149,18 @@
   "activity": [
     {
       "private": true,
+      "language": "HTML",
+      "pushedAt": "2026-10-31"
+    },
+    {
+      "private": true,
       "language": "JavaScript",
-      "pushedAt": "2026-10-29"
+      "pushedAt": "2026-10-30"
     },
     {
       "private": true,
       "language": "C++",
       "pushedAt": "2026-10-29"
-    },
-    {
-      "private": true,
-      "language": "HTML",
-      "pushedAt": "2026-10-28"
     },
     {
       "private": true,
